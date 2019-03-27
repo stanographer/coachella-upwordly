@@ -1,0 +1,416 @@
+body {
+  background-color: #fff;
+  font-family: "Poppins", "Helvetica Neue", sans-serif; }
+
+.bgLight {
+  background-color: rgba(255, 255, 255, 0) !important; }
+
+.boxTop4 {
+  display: block;
+  padding-top: 3.2rem; }
+
+.captionBox {
+  font-family: "Poppins", "Helvetica Neue", sans-serif; }
+
+.coachella-header {
+  color: #2d2d31;
+  font-weight: bold;
+  letter-spacing: .2em;
+  padding: 1em 2em .5em; }
+
+.coachella-header__small {
+  color: #000;
+  padding: 0 2em 0 10em; }
+
+.colNoPadding {
+  padding-left: 0;
+  padding-right: 0; }
+
+.contentPanel {
+  background-color: rgba(255, 255, 255, 0) !important;
+  display: block; }
+
+.form-control {
+  color: unset !important; }
+
+.hr {
+  background-color: #ea005e;
+  height: .5px;
+  margin: 0;
+  text-align: left;
+  width: 4rem; }
+
+.ml-auto, .mx-auto {
+  margin-right: 6em; }
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0) !important;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  min-width: 100vw; }
+
+.navItem {
+  color: #08080d !important;
+  font-family: "Poppins Light", "Helvetica Neue", sans-serif;
+  font-size: 1.21rem;
+  font-weight: 500;
+  letter-spacing: .18rem !important; }
+
+.logoCoachella {
+  height: 2rem !important;
+  padding: .5rem;
+  margin: 0 0 0 13em;
+  position: unset; }
+
+.navWhite {
+  background-color: #fff !important;
+  border-bottom: 1px solid #fff;
+  transition: background-color .35s ease-in-out; }
+
+.responsiveSprig {
+  background-image: url("./assets/images/hero-palm-2.png");
+  background-position: right;
+  background-size: contain;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 12em;
+  transition: opacity .2s ease-in-out;
+  width: 100%;
+  will-change: opacity;
+  background-repeat: no-repeat; }
+
+.responsiveStar {
+  background-image: url("./assets/images/hero-star.png");
+  background-position: right;
+  background-size: contain;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 12em;
+  transition: opacity .2s ease-in-out;
+  width: 100%;
+  will-change: opacity;
+  background-repeat: no-repeat; }
+
+.liveTranscriptText {
+  display: block;
+  letter-spacing: .05em;
+  line-height: 1.5em;
+  margin: 0;
+  min-height: unset;
+  overflow: scroll;
+  text-align: left;
+  text-shadow: unset !important;
+  white-space: pre-wrap;
+  word-break: break-word; }
+
+.rowNoMargin {
+  margin: 0; }
+
+.TheBackground {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+  z-index: -1; }
+
+.TheBackgroundVideo {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100vw;
+  z-index: -1; }
+
+.trackTitle {
+  font-family: "Poppins", "Helvetica Neue", sans-serif; }
+
+.trackTitle .mainHeader h1 {
+  font-family: "Poppins Semibold", sans-serif;
+  font-weight: 600; }
+
+.upperModule {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #2d2d31;
+  height: 20rem;
+  margin: 6rem 0 3rem;
+  position: relative; }
+
+.upperModuleWrapper {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  width: 100%; }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1em .1em; }
+  .trackTitle {
+    margin-top: 2em;
+    padding: 0; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 2) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (-webkit-device-pixel-ratio: 2) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.6rem;
+    padding: 1.6em .1em 1em; }
+  .trackTitle {
+    padding: 1.6em .1em 1em; }
+    .trackTitle h1 {
+      font-size: 1.7rem; }
+    .trackTitle h3 {
+      font-size: 1.2rem; } }
+
+@media screen and (min-width: 320px) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 1.7rem;
+    padding: .3em .1em 1em; }
+  #logo {
+    height: 2.6rem;
+    margin-left: 1.6rem;
+    overflow: visible;
+    position: unset;
+    width: 9rem; }
+  .navbar {
+    padding: 2em 2em 2em 0; }
+  .responsiveSprig {
+    height: 40%; }
+  .responsiveStar {
+    height: 40%; }
+  .trackTitle {
+    padding: 0 1rem; }
+    .trackTitle h1 {
+      font-size: 3.1rem; }
+    .trackTitle h3 {
+      font-size: 1.5rem; }
+  .trackTitle .mainHeader h1 {
+    font-family: "Poppins Semibold", sans-serif;
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 0 0 2rem; } }
+
+@media screen and (min-width: 480px) {
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 2rem;
+    padding: .3em .1em 1em; }
+  #logo {
+    height: 2.6rem;
+    overflow: visible;
+    position: unset;
+    width: 9rem; }
+  .navbar {
+    padding: 2em 4vw; }
+  .responsiveSprig {
+    height: 30%; }
+  .responsiveStar {
+    height: 30%; }
+  .trackTitle {
+    padding: 0 1rem; }
+    .trackTitle h1 {
+      font-size: 3.1rem; }
+    .trackTitle h3 {
+      font-size: 1.5rem; }
+  .trackTitle .mainHeader h1 {
+    font-family: "Poppins Semibold", sans-serif;
+    font-size: 3rem;
+    font-weight: 600; } }
+
+@media only screen and (min-width: 576px) {
+  .burger {
+    display: none; }
+  .contentPanel {
+    max-width: 100%; }
+  .liveTranscriptText {
+    font-size: 2rem;
+    padding: .3em .1em 1em; }
+  #logo {
+    height: 2.6rem;
+    overflow: visible;
+    position: unset;
+    width: 10rem; }
+  .navbar {
+    padding: 2em 4vw; }
+  .responsiveSprig {
+    height: 30%; }
+  .responsiveStar {
+    height: 30%; }
+  .trackTitle {
+    padding: 1rem 2rem; }
+    .trackTitle h1 {
+      font-size: 3.5rem; }
+    .trackTitle h3 {
+      font-size: 2rem; }
+  .trackTitle .mainHeader h1 {
+    font-family: "Poppins Semibold", sans-serif;
+    font-size: 3rem;
+    font-weight: 600; } }
+
+@media only screen and (min-width: 768px) {
+  .burger {
+    display: block; }
+  .contentPanel {
+    max-width: 70%; }
+  .liveTranscriptText {
+    font-size: 2.3rem;
+    padding: .3em .1em 1em; }
+  #logo {
+    height: 2.6rem;
+    overflow: visible;
+    position: unset;
+    width: 10rem; }
+  .responsiveSprig {
+    height: 50%; }
+  .responsiveStar {
+    height: 50%; }
+  .trackTitle {
+    padding: 1rem 2rem; }
+    .trackTitle h1 {
+      font-size: 3.5rem; }
+    .trackTitle h3 {
+      font-size: 2rem; } }
+
+.trackTitle .mainHeader h1 {
+  font-family: "Poppins Semibold", sans-serif;
+  font-size: 3rem;
+  font-weight: 600; }
+
+@media only screen and (min-width: 992px) {
+  .burger {
+    display: none; }
+  .contentPanel {
+    max-width: 70%; }
+  .liveTranscriptText {
+    font-size: 2.3rem;
+    padding: 1rem; }
+  .responsiveSprig {
+    height: 60%; }
+  .responsiveStar {
+    height: 60%; }
+  .trackTitle {
+    padding: 1rem 2rem; }
+    .trackTitle h1 {
+      font-size: 3.5rem; }
+    .trackTitle h3 {
+      font-size: 2rem; }
+    .trackTitle h4 {
+      font-family: 'Poppins Light', sans-serif; }
+  .trackTitle .mainHeader h1 {
+    font-family: "Poppins Semibold", sans-serif;
+    font-size: 5rem;
+    font-weight: 600; } }
+
+@media only screen and (min-width: 1200px) {
+  .burger {
+    display: none; }
+  .contentPanel {
+    margin-left: 5.6rem;
+    max-width: 70%; }
+  .liveTranscriptText {
+    font-size: 2.4rem;
+    padding: 1rem; }
+  .navbar {
+    padding: 2.5em 7rem; }
+  .responsiveSprig {
+    height: 70%; }
+  .responsiveStar {
+    height: 70%; }
+  .trackTitle {
+    padding: 1rem 2rem; }
+    .trackTitle h1 {
+      font-size: 3.5rem; }
+    .trackTitle h3 {
+      font-size: 2rem; }
+  .trackTitle .mainHeader h1 {
+    font-family: "Poppins Semibold", sans-serif;
+    font-size: 6rem; } }

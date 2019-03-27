@@ -1,0 +1,126 @@
+// Media query breakpoints
+
+// iPhone 5, 4
+$screen-xxs-min: 320px;
+
+// Extra Small Devices, Phones
+$screen-xs-min: 480px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Media query mixins
+
+@mixin iphone-4 {
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content
+  }
+}
+
+@mixin iphone-5 {
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-height: 568px)
+  and (-webkit-device-pixel-ratio: 2) {
+    @content
+  }
+}
+
+@mixin iphone-6-up {
+  @media screen
+  and (min-device-width: 414px)
+  and (max-device-height: 736px)
+  and (-webkit-device-pixel-ratio: 2) {
+    @content
+  }
+}
+
+@mixin iphone-x {
+  @media only screen and (min-device-width: 375px)
+  and (max-device-height: 812px)
+  and (-webkit-device-pixel-ratio: 3) {
+    @content
+  }
+}
+
+@mixin iphone-xr-max {
+  @media only screen and (min-device-width: 414px)
+  and (max-device-height: 896px)
+  and (-webkit-device-pixel-ratio: 3) {
+    @content
+  }
+}
+
+@mixin galaxy-4 {
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-height: 640px)
+  and (-webkit-device-pixel-ratio: 2) {
+    @content
+  }
+}
+
+@mixin galaxy-5 {
+  @media only screen
+  and (min-device-width: 360px)
+  and (max-device-height: 640px)
+  and (-webkit-device-pixel-ratio: 3) {
+    @content
+  }
+}
+
+@mixin xxs {
+  @media screen and (min-width: #{$screen-xxs-min}) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media screen and (min-width: #{$screen-xs-min}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media only screen and (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media only screen and (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}

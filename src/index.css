@@ -1,0 +1,8 @@
+html {
+  font-size: 13px;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+  font-family: 'Poppins Medium', sans-serif;
+  padding: 0 1.7em;
+}
