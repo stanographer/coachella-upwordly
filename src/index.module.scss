@@ -16,6 +16,15 @@ body {
   font-family: $font-stack;
 }
 
+.aboutDrawer {
+  background-color: $white;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  width: 100vw;
+  transform-origin: top;
+}
+
 .bgLight {
   background-color: $clear !important;
 }
@@ -380,9 +389,9 @@ body {
     width: 9rem;
   }
 
-  .navbar {
-    padding: 2em 2em 2em 0;
-  }
+  //.navbar {
+  //  padding: 2em 2em 2em 0;
+  //}
 
   .responsiveSprig {
     height: 40%;
@@ -431,9 +440,9 @@ body {
     width: 9rem;
   }
 
-  .navbar {
-    padding: 2em 4vw;
-  }
+  //.navbar {
+  //  padding: 2em 4vw;
+  //}
 
   .responsiveSprig {
     height: 30%;
@@ -532,6 +541,10 @@ body {
     padding: .3em .1em 1em;
   }
 
+  .navbar {
+    padding: 2.5em 7rem;
+  }
+
   #logo {
     height: 2.6rem;
     overflow: visible;
@@ -580,6 +593,10 @@ body {
   .liveTranscriptText {
     font-size: 2.3rem;
     padding: 1rem;
+  }
+
+  .navbar {
+    padding: 2.5em 7rem;
   }
 
   .responsiveSprig {

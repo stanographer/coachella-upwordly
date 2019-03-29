@@ -2,6 +2,14 @@ body {
   background-color: #fff;
   font-family: "Poppins", "Helvetica Neue", sans-serif; }
 
+.aboutDrawer {
+  background-color: #fff;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  width: 100vw;
+  transform-origin: top; }
+
 .bgLight {
   background-color: rgba(255, 255, 255, 0) !important; }
 

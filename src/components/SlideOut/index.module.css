@@ -1,0 +1,39 @@
+.contents p {
+  font-size: 1.3rem; }
+
+.header {
+  font-family: "Poppins Semibold", sans-serif;
+  font-size: 3.4rem;
+  letter-spacing: .05rem; }
+
+@media screen and (min-width: 320px) {
+  .contentBlock {
+    margin-bottom: 1rem; }
+  .drawerContent {
+    padding-top: 10rem; } }
+
+@media screen and (min-width: 480px) {
+  .contentBlock {
+    margin-bottom: 1rem; }
+  .drawerContent {
+    padding-top: 10rem; } }
+
+@media only screen and (min-width: 576px) {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw; } }
+
+@media only screen and (min-width: 768px) {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw; } }
+
+@media only screen and (min-width: 992px) {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw; } }
+
+@media only screen and (min-width: 1200px) {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw; } }

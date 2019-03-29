@@ -6,8 +6,10 @@ $drop-shadow: rgba(0, 0, 0, .14);
 .icon {
   display: inline-block;
   filter: drop-shadow(0 1px 2px $drop-shadow);
+  height: 4.8rem;
   opacity: 1;
   position: relative;
+  width: 4.8rem;
 }
 
 .isVisuallyHidden {
@@ -24,9 +26,10 @@ $drop-shadow: rgba(0, 0, 0, .14);
 .navButton {
   background: 0 0;
   border: 0;
+  right: 5vw;
 }
 
-.scrollToBottom {
+.location {
   z-index: 20;
 }
 
@@ -36,12 +39,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-4 {
-  .icon {
-    height: 3em;
-    width: 3em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -50,12 +48,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-5 {
-  .icon {
-    height: 3em;
-    width: 3em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -64,12 +57,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-6-up {
-  .icon {
-    height: 3em;
-    width: 3em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -78,12 +66,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-x {
-  .icon {
-    height: 3.5em;
-    width: 3.5em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -92,12 +75,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-xr-max {
-  .icon {
-    height: 3em;
-    width: 3em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -106,12 +84,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include xxs {
-  .icon {
-    height: 3em;
-    width: 3em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 1.4em;
     opacity: 1;
     position: fixed;
@@ -120,12 +93,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include sm {
-  .icon {
-    height: 3.2em;
-    width: 3.2em;
-  }
-
-  .scrollToBottom {
+  .location {
     bottom: 2.4em;
     opacity: 1;
     position: fixed;
@@ -140,16 +108,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include lg {
-  .icon {
-    height: 4.8em;
-    width: 4.8em;
-  }
-
   .navButton {
     display: none;
   }
 
-  .scrollToBottom {
+  .location {
     bottom: 3em;
     opacity: 1;
     position: fixed;
@@ -158,16 +121,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include xl {
-  .icon {
-    height: 4.8em;
-    width: 4.8em;
-  }
-
   .navButton {
     display: none;
   }
 
-  .scrollToBottom {
+  .location {
     bottom: 3.2em;
     opacity: 1;
     position: fixed;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Controls.module.scss';
+import styles from './Arrow.module.scss';
 
 const Hamburger = () => {
   return (

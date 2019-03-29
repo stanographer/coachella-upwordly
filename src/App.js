@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Col,
   Container,
@@ -7,18 +7,23 @@ import {
 import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
 import { animateScroll as scroll } from 'react-scroll/modules';
-import { connection } from './components/ShareDB/connection';
-import ShareDBBinding from './components/ShareDB';
-import Navigation from './components/Navigation';
-import { Arrow } from './components/Controls';
-import UpperModule from './components/UpperModule';
+import { css } from 'emotion';
 import Drawer from 'react-drag-drawer';
 
 // Main assets
-import BgVideo from './components/BgVideo';
-import Ornament from './components/Ornament';
 import './assets/fonts/fonts.scss';
 import styles from './index.module.scss';
+
+// Modules
+import { Arrow } from './components/Controls';
+import BgVideo from './components/BgVideo';
+import { Burger } from './components/Controls';
+import { connection } from './components/ShareDB/connection';
+import Ornament from './components/Ornament';
+import Navigation from './components/Navigation';
+import ShareDBBinding from './components/ShareDB';
+import UpperModule from './components/UpperModule';
+import SlideOut from './components/SlideOut';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +32,9 @@ class App extends React.Component {
     this.state = {
       arrowVisible: false,
       loading: true,
+      drawerOpen: false,
       scrollOff: true,
+      navbarFixed: false,
       transparentNav: true,
     };
 
@@ -36,6 +43,7 @@ class App extends React.Component {
     this.handleNavTransparency = this.handleNavTransparency.bind(this);
     this.onLoaded = this.onLoaded.bind(this);
     this.scrollIfReady = this.scrollIfReady.bind(this);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
   }
 
   componentDidMount() {
@@ -43,16 +51,18 @@ class App extends React.Component {
   }
 
   onLoaded = () => {
-    console.log('loaded!');
     this.setState({
       loading: false
     });
   };
 
+  // Initiatives an auto-scroll to the bottom
+  // once the div grows in size.
   onScrollToBottom = atBottom => {
     if (!atBottom) return this.scrollIfReady();
   };
 
+  // Controls the transparency of the nav bar.
   handleNavTransparency = state => {
     if (state) {
       this.setState({
@@ -68,10 +78,16 @@ class App extends React.Component {
   };
 
   // Toggles the drawer info page.
-  toggle = () => {
-    let { toggle } = this.state
-    this.setState({ toggle: !toggle })
-  }
+  toggleDrawer = () => {
+    let { drawerOpen, navbarFixed } = this.state;
+
+    this.setState({
+      drawerOpen: !drawerOpen,
+      navbarFixed: !navbarFixed,
+      transparentNav: false,
+    });
+
+  };
 
   // Starts auto-scrolling forcibly.
   autoscroll = () => {
@@ -97,11 +113,49 @@ class App extends React.Component {
   };
 
   render() {
+    // Styles for the modal.
+    const modalStyle = css`
+      position: fixed;
+      top: 7.6rem;
+      background-color: white;
+      width: 100%;
+      min-width: 100%;
+      min-height: 70%;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+     
+      @media (max-width: 480px) {
+        min-height: 100%;
+        top: 0;
+       }
+       
+       @media (max-width: 576px) {
+        min-height: 100%;
+        top: 0;
+       }
+       
+       @media (max-width: 768px) {
+        min-height: 100%;
+        top: 0;
+       }
+       
+       @media (max-width: 992px) {
+        min-height: 100%;
+        top: 0;
+       }
+`;
+
     const style = {
       color: '#000',
       fontFamily: 'Poppins, sans-serif'
     };
-    const { arrowVisible, transparentNav } = this.state;
+
+    const {
+            arrowVisible,
+            navbarFixed,
+            transparentNav,
+            drawerOpen
+          } = this.state;
 
     return (
       <div
@@ -119,7 +173,22 @@ class App extends React.Component {
         } }>
         <Ornament />
         <BgVideo />
-        <Navigation arrowVisible={ arrowVisible  } transparentNav={ transparentNav } />
+        <Navigation
+          arrowVisible={ arrowVisible }
+          closeModal={ this.toggleDrawer }
+          drawerOpen={ drawerOpen }
+          navbarFixed={ navbarFixed }
+          toggleDrawer={ this.toggleDrawer }
+          transparentNav={ transparentNav }
+        />
+        <Drawer
+          direction="top"
+          modalElementClass={ modalStyle }
+          onRequestClose={ this.toggleDrawer }
+          open={ drawerOpen }
+        >
+          <SlideOut closeModal={ this.toggleDrawer } />
+        </Drawer>
         <div className={ styles.contentPanel }>
           <Container className={ styles.captionBox } fluid>
             <Row className={ styles.rowNoMargin }>
@@ -160,7 +229,7 @@ class App extends React.Component {
               <h1>{ this.state.scrollOff }</h1>
             </Row>
           </Container>
-          { arrowVisible
+          { arrowVisible && !navbarFixed
             ? <Arrow
               scrollDown={ () => {
                 this.setState({

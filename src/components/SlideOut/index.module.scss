@@ -1,0 +1,67 @@
+@import '../../assets/styles/media-queries.scss';
+
+$font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
+$font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
+$font-stack-semibold: 'Poppins Semibold', sans-serif;
+$font-stack-bold: 'Poppins Bold', sans-serif;
+
+.contents {
+  p {
+    font-size: 1.3rem;
+  }
+}
+
+.header {
+  font-family: $font-stack-semibold;
+  font-size: 3.4rem;
+  letter-spacing: .05rem;
+}
+
+@include xxs {
+  .contentBlock {
+    margin-bottom: 1rem;
+  }
+
+  .drawerContent {
+    padding-top: 10rem;
+  }
+}
+
+@include xs {
+  .contentBlock {
+    margin-bottom: 1rem;
+  }
+
+  .drawerContent {
+    padding-top: 10rem;
+  }
+}
+
+@include sm {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
+@include md {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
+@include lg {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
+@include xl {
+  .drawerContent {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
