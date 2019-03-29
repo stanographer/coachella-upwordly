@@ -9,6 +9,7 @@ const Arrow = props => {
   return (
     <div onClick={ () => props.scrollDown() }>
       <Button
+        aria-label="Scroll to Bottom"
         filter="scroll-top-a"
         href="scroll-top-b"
         id="scroll-top-b"
@@ -24,9 +25,12 @@ const Close = props => {
   return (
     <div onClick={ () => props.closeModal() }>
       <Button
+        aria-label="Close Modal"
+        circleID="hamburgerB"
         filter="exitFilter"
+        filterID="hamburgerA"
         href="exitCircle"
-        id="exitCircle"
+        id="hamburgerB"
         path="M21.25 20.25l9.5 9.5M21.25 29.75l9.5-9.5"
         styles={ closeStyles }
         title="Close Modal"
@@ -37,8 +41,16 @@ const Close = props => {
 
 const Burger = props => {
   return (
-    <div onClick={ props.onClick }>
-      <Hamburger />
+    <div onClick={ () => props.onClick() }>
+      <Hamburger
+        aria-label="Burger Menu"
+        circleID="hamburgerB"
+        filter="hamburgerA"
+        href="hamburgerB"
+        path="M20 22h12-12zm6 6h6-6z"
+        styles={ closeStyles }
+        title="Burger Menu"
+      />
     </div>
   );
 };
