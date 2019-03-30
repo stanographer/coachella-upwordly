@@ -41,7 +41,7 @@ const Close = props => {
 
 const Burger = props => {
   return (
-    <div onClick={ () => props.onClick() }>
+    <div className={ closeStyles.navButton } onClick={ () => props.onClick() }>
       <Hamburger
         aria-label="Burger Menu"
         circleID="hamburgerB"

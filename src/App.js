@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   Col,
   Container,
@@ -17,7 +17,6 @@ import styles from './index.module.scss';
 // Modules
 import { Arrow } from './components/Controls';
 import BgVideo from './components/BgVideo';
-import { Burger } from './components/Controls';
 import { connection } from './components/ShareDB/connection';
 import Ornament from './components/Ornament';
 import Navigation from './components/Navigation';
@@ -33,16 +32,14 @@ class App extends React.Component {
       arrowVisible: false,
       loading: true,
       drawerOpen: false,
-      scrollOff: true,
+      userScrolled: false,
       navbarFixed: false,
       transparentNav: true,
     };
 
     this.doc = connection.get('stanley', 'coachella');
 
-    this.handleNavTransparency = this.handleNavTransparency.bind(this);
     this.onLoaded = this.onLoaded.bind(this);
-    this.scrollIfReady = this.scrollIfReady.bind(this);
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
 
@@ -59,22 +56,24 @@ class App extends React.Component {
   // Initiatives an auto-scroll to the bottom
   // once the div grows in size.
   onScrollToBottom = atBottom => {
-    if (!atBottom) return this.scrollIfReady();
+    if (!atBottom) this.autoscroll();
   };
 
-  // Controls the transparency of the nav bar.
-  handleNavTransparency = state => {
-    if (state) {
+  // Uses a different intersection observer
+  // to see if the user scrolled up.
+  onUserScroll = state => {
+    if (state === false) {
       this.setState({
-        transparentNav: true,
-        arrowVisible: true
+        arrowVisible: true,
+        userScrolled: true,
       });
     } else {
       this.setState({
-        transparentNav: false,
-        arrowVisible: false
+        arrowVisible: false,
+        userScrolled: false,
       });
     }
+    console.log('user scroll', this.state.userScrolled);
   };
 
   // Toggles the drawer info page.
@@ -94,22 +93,17 @@ class App extends React.Component {
     setTimeout(() => {
       scroll.scrollToBottom({
         delay: 0,
-        duration: 200,
-        isDynamic: true
+        duration: 100,
+        offset: 30,
+        isDynamic: true,
+        smooth: true,
       });
     }, 0);
 
     this.setState({
       arrowVisible: false,
-      scrollOff: false
+      userScrolled: false,
     });
-  };
-
-  // Scrolls if the user hasn't done something to turn it off.
-  scrollIfReady = () => {
-    if (!this.state.scrollOff) {
-      this.autoscroll();
-    }
   };
 
   render() {
@@ -125,7 +119,7 @@ class App extends React.Component {
       border-top-right-radius: 4px;
      
       @media (max-width: 480px) {
-        min-height: 100%;
+        min-height: 100vh;
         top: 0;
        }
        
@@ -136,14 +130,13 @@ class App extends React.Component {
        
        @media (max-width: 768px) {
         min-height: 100%;
-        top: 0;
+        top: 7.6rem;
        }
        
        @media (max-width: 992px) {
         min-height: 100%;
         top: 0;
-       }
-`;
+       }`;
 
     const style = {
       color: '#000',
@@ -152,9 +145,10 @@ class App extends React.Component {
 
     const {
             arrowVisible,
+            drawerOpen,
             navbarFixed,
             transparentNav,
-            drawerOpen
+            userScrolled,
           } = this.state;
 
     return (
@@ -165,12 +159,7 @@ class App extends React.Component {
             scrollOff: true
           });
         } }
-        onTouchStart={ () => {
-          this.setState({
-            arrowVisible: true,
-            scrollOff: true
-          });
-        } }>
+      >
         <Ornament />
         <BgVideo />
         <Navigation
@@ -180,6 +169,7 @@ class App extends React.Component {
           navbarFixed={ navbarFixed }
           toggleDrawer={ this.toggleDrawer }
           transparentNav={ transparentNav }
+          userScrolled={ userScrolled }
         />
         <Drawer
           direction="top"
@@ -194,7 +184,7 @@ class App extends React.Component {
             <Row className={ styles.rowNoMargin }>
               <Col md={ 12 } className={ styles.colNoPadding }>
                 <div className={ styles.upperModuleWrapper }>
-                  <UpperModule handleNavTransparency={ this.handleNavTransparency } />
+                  <UpperModule />
                 </div>
               </Col>
             </Row>
@@ -212,6 +202,18 @@ class App extends React.Component {
                          arrowVisible: true
                        });
                      } }>
+                  <InView
+                    style={ {
+                      height: '3px',
+                      display: 'inline',
+                      position: 'absolute',
+                      bottom: '20em',
+                      overflow: 'hidden'
+                    } }
+                    as="span"
+                    threshold={ 1 }
+                    onChange={ state => this.onUserScroll(state) }
+                  />
                   <ShareDBBinding
                     cssClass={ styles.liveTranscriptText }
                     style={ style }
@@ -220,7 +222,7 @@ class App extends React.Component {
                     elementType="div" />
                 </div>
                 <InView
-                  style={ { height: '2px' } }
+                  style={ { height: '1px' } }
                   as="div"
                   threshold={ .1 }
                   onChange={ state => this.onScrollToBottom(state) }
@@ -233,9 +235,9 @@ class App extends React.Component {
             ? <Arrow
               scrollDown={ () => {
                 this.setState({
-                  scrollOff: false,
-                  arrowVisible: false
-                }, this.autoscroll);
+                  userScrolled: false,
+                  arrowVisible: false,
+                }, () => this.autoscroll());
               } } />
             : '' }
         </div>

@@ -1,16 +1,10 @@
 import React, { Fragment } from 'react';
 import TrackTitle from '../../components/TrackTitle';
-import 'intersection-observer';
-import { InView } from 'react-intersection-observer';
 import styles from '../../index.module.scss';
 
 const UpperModule = (props) => {
   return (
     <Fragment>
-      <InView
-        as="div"
-        threshold={ .1 }
-        onChange={ state => props.handleNavTransparency(state) } />
       <div className={ styles.upperModule }>
         <div className={ styles.trackTitle }>
           <header className={ styles.mainHeader }>

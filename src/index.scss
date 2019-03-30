@@ -1,0 +1,31 @@
+// Media queries
+@import './assets/styles/media-queries.scss';
+
+html {
+  font-size: 13px;
+}
+
+@include xs {
+  .css-3pxmmn {
+    top: 0 !important;
+  }
+}
+
+@include sm {
+  .css-3pxmmn {
+    top: 0 !important;
+  }
+}
+
+@include lg {
+  .css-3pxmmn {
+    top: 7.6rem !important;
+  }
+}
+
+
+
+.navbar-expand-md .navbar-nav .nav-link {
+  font-family: 'Poppins Medium', sans-serif;
+  padding: 0 1.7em;
+}
