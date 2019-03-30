@@ -44,7 +44,7 @@
     "node-sass-chokidar": "^1.3.4",
     "prop-types": "^15.7.2"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Web app to provide live captions at Coachella festival.",
   "main": "App.js",
   "repository": {
     "type": "git",
