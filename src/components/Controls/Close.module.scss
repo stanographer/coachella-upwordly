@@ -24,11 +24,13 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 .navButton {
+  top: 0;
+  right: 5vw;
   display: inline-block;
   filter: drop-shadow(0 1px 2px $drop-shadow);
   height: 4.8rem;
   opacity: 1;
-  position: relative;
+  position: fixed;
   width: 4.8rem;
   z-index: 1;
 }
