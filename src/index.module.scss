@@ -7,6 +7,7 @@ $clear: rgba(255, 255, 255, 0);
 $font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
 $font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
 $font-stack-semibold: 'Poppins Semibold', sans-serif;
+$font-stack-medium: 'Poppins Medium', sans-serif;
 
 // Media queries
 @import './assets/styles/media-queries.scss';
@@ -84,11 +85,71 @@ body {
 }
 
 .navItem {
+  button {
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    transition: opacity .01s ease-in;
+
+    &:focus {
+      outline: none;
+    }
+
+    > span {
+      border: 0;
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      vertical-align: baseline;
+    }
+  }
+}
+
+.navLink {
+  &:hover {
+    >::after {
+      transform: scaleX(.5);
+    }
+  }
+
+  &:active {
+    >::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus {
+    >::after {
+      transform: scaleX(1);
+    }
+  }
+
+  >::after {
+    background: $hot-pink;
+    bottom: 0;
+    content: '';
+    height: .2rem;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .4s ease-out;
+    width: 100%;
+  }
+
   color: $almost-black !important;
-  font-family: $font-stack-light;
-  font-size: 1.21rem;
+  font-family: $font-stack-medium;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: .18rem !important;
+  padding: 2rem;
+  position: relative;
 }
 
 .logoCoachella {
@@ -386,7 +447,7 @@ body {
     margin-left: 1.6rem;
     overflow: visible;
     position: unset;
-    width: 9rem;
+    width: 10rem;
   }
 
   .navbar {
@@ -437,7 +498,7 @@ body {
     height: 2.6rem;
     overflow: visible;
     position: unset;
-    width: 9rem;
+    width: 13rem;
   }
 
   .navbar {
@@ -489,9 +550,10 @@ body {
 
   #logo {
     height: 2.6rem;
+    margin: 0;
     overflow: visible;
     position: unset;
-    width: 10rem;
+    width: 13rem;
   }
 
   .navbar {
@@ -543,9 +605,10 @@ body {
 
   #logo {
     height: 2.6rem;
+    margin: 0;
     overflow: visible;
     position: unset;
-    width: 10rem;
+    width: 13rem;
   }
 
   .responsiveSprig {
@@ -640,7 +703,8 @@ body {
   }
 
   .navbar {
-    padding: 2.5em 7rem;
+    height: 10rem;
+    padding: 0 8vw;
   }
 
   .responsiveSprig {

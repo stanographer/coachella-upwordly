@@ -1,13 +1,24 @@
 // Media queries
 @import './assets/styles/media-queries.scss';
 
+// Colors
+$hot-pink: #ea005e;
+
 html {
   font-size: 13px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
 }
 
 @include xs {
   .css-3pxmmn {
     top: 0 !important;
+  }
+
+  .css-8hmivt {
+    transform: translate3d(0px, 0px, 0px) !important;
   }
 }
 
@@ -15,15 +26,27 @@ html {
   .css-3pxmmn {
     top: 0 !important;
   }
+
+  .css-8hmivt {
+    transform: translate3d(0px, 0px, 0px) !important;
+  }
 }
 
 @include lg {
   .css-3pxmmn {
     top: 7.6rem !important;
   }
+
+  .css-8hmivt {
+    transform: translate3d(0px, 0px, 0px) !important;
+  }
 }
 
-
+.navbar-brand {
+  margin-left: 0;
+  margin-right: 0;
+  padding: .25rem 0;
+}
 
 .navbar-expand-md .navbar-nav .nav-link {
   font-family: 'Poppins Medium', sans-serif;

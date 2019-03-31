@@ -30,11 +30,12 @@ class App extends React.Component {
 
     this.state = {
       arrowVisible: false,
-      loading: true,
       drawerOpen: false,
-      userScrolled: false,
+      loading: true,
+      mobile: false,
       navbarFixed: false,
       transparentNav: true,
+      userScrolled: false,
     };
 
     this.doc = connection.get('stanley', 'coachella');
@@ -45,6 +46,13 @@ class App extends React.Component {
 
   componentDidMount() {
     document.title = 'Coachella Captions';
+
+    window.addEventListener('resize', this.resize.bind(this), false);
+    this.resize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize.bind(this), false);
   }
 
   onLoaded = () => {
@@ -53,11 +61,8 @@ class App extends React.Component {
     });
   };
 
-  // Initiatives an auto-scroll to the bottom
-  // once the div grows in size.
-  onScrollToBottom = atBottom => {
-    if (!atBottom) this.autoscroll();
-  };
+  // Initiatives an auto-scroll to the bottom once the div grows in size.
+  onScrollToBottom = atBottom => !atBottom ? this.autoscroll() : null;
 
   // Uses a different intersection observer
   // to see if the user scrolled up.
@@ -76,6 +81,8 @@ class App extends React.Component {
     console.log('user scroll', this.state.userScrolled);
   };
 
+  resize = () => this.setState({ mobile: window.innerWidth <= 760 });
+
   // Toggles the drawer info page.
   toggleDrawer = () => {
     let { drawerOpen, navbarFixed } = this.state;
@@ -85,7 +92,6 @@ class App extends React.Component {
       navbarFixed: !navbarFixed,
       transparentNav: false,
     });
-
   };
 
   // Starts auto-scrolling forcibly.
@@ -115,20 +121,27 @@ class App extends React.Component {
       width: 100%;
       min-width: 100%;
       min-height: 70%;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
      
       @media (max-width: 480px) {
+        width: 100%
+        max-width: 100%;
+        margin-bottom: 0;
         min-height: 100vh;
         top: 0;
        }
        
        @media (max-width: 576px) {
+        width: 100%
+        max-width: 100%;
+        margin-bottom: 0;
         min-height: 100%;
         top: 0;
        }
        
        @media (max-width: 768px) {
+        width: 100%
+        max-width: 100%;
+        margin-bottom: 0;
         min-height: 100%;
         top: 7.6rem;
        }
@@ -146,6 +159,7 @@ class App extends React.Component {
     const {
             arrowVisible,
             drawerOpen,
+            mobile,
             navbarFixed,
             transparentNav,
             userScrolled,
@@ -166,13 +180,14 @@ class App extends React.Component {
           arrowVisible={ arrowVisible }
           closeModal={ this.toggleDrawer }
           drawerOpen={ drawerOpen }
+          mobile={ mobile }
           navbarFixed={ navbarFixed }
           toggleDrawer={ this.toggleDrawer }
           transparentNav={ transparentNav }
           userScrolled={ userScrolled }
         />
         <Drawer
-          direction="top"
+          direction={ mobile ? 'right' : 'top' }
           modalElementClass={ modalStyle }
           onRequestClose={ this.toggleDrawer }
           open={ drawerOpen }

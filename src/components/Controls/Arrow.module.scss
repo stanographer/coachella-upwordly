@@ -33,6 +33,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-4 {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
   .location {
     bottom: 1.4em;
     opacity: 1;
@@ -42,6 +47,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-5 {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
   .location {
     bottom: 1.4em;
     opacity: 1;
@@ -51,6 +61,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-6-up {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
   .location {
     bottom: 1.4em;
     opacity: 1;
@@ -60,6 +75,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-x {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
   .location {
     bottom: 1.4em;
     opacity: 1;
@@ -69,6 +89,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include iphone-xr-max {
+  .icon {
+    height: 3.8rem;
+    width: 3.8rem;
+  }
+
   .location {
     bottom: 1.4em;
     opacity: 1;

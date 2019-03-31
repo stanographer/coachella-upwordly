@@ -30,22 +30,11 @@ class Navigation extends React.Component {
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.resize.bind(this), false);
-    this.resize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resize.bind(this), false);
-  }
-
   navTransparent = () => this.setState({ transparentNav: true });
 
   navOpaque = () => this.setState({ transparentNav: false });
 
   onScroll = state => console.log('on scroll', state);
-
-  resize = () => this.setState({ mobileNav: window.innerWidth <= 760 });
 
   toggle = () => {
     this.setState({
@@ -54,10 +43,10 @@ class Navigation extends React.Component {
   };
 
   render() {
-    const { isOpen, mobileNav, transparentNav } = this.state;
-    const { navbarFixed, toggleDrawer } = this.props;
+    const { isOpen, transparentNav } = this.state;
+    const { mobile, navbarFixed, toggleDrawer } = this.props;
 
-    const component = mobileNav
+    const component = mobile
       ? <MobileNav
         navTransparent={ this.navTransparent }
         navOpaque={ this.navOpaque }
@@ -108,14 +97,14 @@ const MobileNav = props => {
           <Logo className={ styles.logoCoachella } />
         </NavbarBrand>
         <Nav>
-        <NavItem>
-          <NavLink href="#">
-            <Burger
-              onClick={ toggleDrawer }
-              className={ styles.burger }
-            />
-          </NavLink>
-        </NavItem>
+          <NavItem>
+            <NavLink href="#">
+              <Burger
+                onClick={ toggleDrawer }
+                className={ styles.burger }
+              />
+            </NavLink>
+          </NavItem>
         </Nav>
       </Navbar>
       <InView
@@ -178,27 +167,33 @@ const FullNavbar = props => {
           />
           <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink
-                  className={ `${ styles.navItem } ${ styles.slideUnderline }` }
-                  href="https://www.coachella.com/lineup/#/artists/alphabetical"
-                  target="_blank"
-                  rel="noopener noreferrer">MUSIC</NavLink>
+              <NavItem className={ styles.navItem }>
+                <button
+                  className={ styles.navLink }
+                  type="button"
+                  aria-label="Music"
+                  rel="noopener noreferrer">
+                  <span>MUSIC</span>
+                </button>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  className={ styles.navItem }
-                  href="https://www.coachella.com/ada/"
-                  target="_blank"
-                  rel="noopener noreferrer">ADA</NavLink>
+              <NavItem className={ styles.navItem }>
+                <button
+                  className={ styles.navLink }
+                  type="button"
+                  aria-label="ADA"
+                  rel="noopener noreferrer">
+                  <span>ADA</span>
+                </button>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  className={ styles.navItem }
-                  href="#"
-                  onClick={ toggleDrawer }>
-                  ABOUT LIVE CAPTIONING
-                </NavLink>
+              <NavItem className={ styles.navItem }>
+                <button
+                  aria-label="About Live Captioning"
+                  className={ styles.navLink }
+                  onClick={ toggleDrawer }
+                  rel="noopener noreferrer"
+                  type="button">
+                  <span>ABOUT LIVE CAPTIONING</span>
+                </button>
               </NavItem>
             </Nav>
           </Collapse>
