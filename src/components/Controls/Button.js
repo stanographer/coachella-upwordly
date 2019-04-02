@@ -6,7 +6,11 @@ const Button = ({ filter, href, id, path, styles, title }) => {
     <span className={ styles.location }
           style={ { transform: 'matrix(1, 0, 0, 1, 0, 0)' } }>
       <i className={ styles.icon }>
-        <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          viewBox="0 0 52 52"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
           <defs>
             <circle id={ id } cx="24" cy="24" r="24" />
             <filter id={ filter } width="114.6%" height="114.6%" x="-7.3%" y="-5.2%"

@@ -10,14 +10,22 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const rand = getRandomInt(0, 1);
+// Calculate a random integer.
+const rand = getRandomInt(0, 2);
+
+// Spit out an ornament based on the random number via key.
+const ornaments = {
+  0: <div className={ styles.responsiveSprig } />,
+  1: <div className={ styles.responsiveStar } />,
+  2: <div className={ styles.responsiveFlower } />
+};
 
 const Ornament = () => {
+  const ornament = ornaments[rand];
+
   return (
     <Fragment>
-      { rand === 0
-        ? <div className={ styles.responsiveSprig } />
-        : <div className={ styles.responsiveStar } /> }
+      { ornament }
     </Fragment>
   );
 };

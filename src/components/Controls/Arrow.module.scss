@@ -24,7 +24,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 .location {
-  z-index: 20;
+  z-index: 21;
 }
 
 .stroke {
@@ -76,8 +76,8 @@ $drop-shadow: rgba(0, 0, 0, .14);
 
 @include iphone-x {
   .icon {
-    height: 3.8rem;
-    width: 3.8rem;
+    height: 4.5rem;
+    width: 4.5rem;
   }
 
   .location {

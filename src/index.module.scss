@@ -1,9 +1,13 @@
+// Colors
+
 $almost-black: #08080d;
 $black: #000;
 $grey-darker: #2d2d31;
 $white: #fff;
 $hot-pink: #ea005e;
 $clear: rgba(255, 255, 255, 0);
+
+// Fonts
 $font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
 $font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
 $font-stack-semibold: 'Poppins Semibold', sans-serif;
@@ -71,6 +75,34 @@ body {
   margin: 0;
   text-align: left;
   width: 4rem;
+}
+
+.hrSmall {
+  width: 1.6rem;
+}
+
+.isVisuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.liveTranscriptText {
+  display: block;
+  letter-spacing: .05em;
+  line-height: 1.5em;
+  margin: 0;
+  min-height: unset;
+  overflow: scroll;
+  text-align: left;
+  text-shadow: unset !important;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .ml-auto, .mx-auto {
@@ -165,6 +197,20 @@ body {
   transition: background-color .35s ease-in-out;
 }
 
+.responsiveFlower {
+  background-image: url('./assets/images/hero-flower.png');
+  background-position: right;
+  background-size: contain;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 16em;
+  transition: opacity .2s ease-in-out;
+  width: 100%;
+  will-change: opacity;
+  background-repeat: no-repeat;
+}
+
 .responsiveSprig {
   background-image: url('./assets/images/hero-palm-2.png');
   background-position: right;
@@ -172,7 +218,7 @@ body {
   left: 0;
   opacity: 1;
   position: absolute;
-  top: 12em;
+  top: 16rem;
   transition: opacity .2s ease-in-out;
   width: 100%;
   will-change: opacity;
@@ -186,24 +232,11 @@ body {
   left: 0;
   opacity: 1;
   position: absolute;
-  top: 12em;
+  top: 16em;
   transition: opacity .2s ease-in-out;
   width: 100%;
   will-change: opacity;
   background-repeat: no-repeat;
-}
-
-.liveTranscriptText {
-  display: block;
-  letter-spacing: .05em;
-  line-height: 1.5em;
-  margin: 0;
-  min-height: unset;
-  overflow: scroll;
-  text-align: left;
-  text-shadow: unset !important;
-  white-space: pre-wrap;
-  word-break: break-word;
 }
 
 .rowNoMargin {
@@ -251,7 +284,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: $grey-darker;
-  height: 20rem;
   margin: 6rem 0 3rem;
   position: relative;
 }
@@ -274,7 +306,7 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding: 1em .1em;
   }
 
@@ -298,13 +330,11 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding: 1.6em .1em 1em;
   }
 
   .trackTitle {
-    padding: 1.6em .1em 1em;
-
     h1 {
       font-size: 1.7rem;
     }
@@ -321,13 +351,11 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding: 1.6em .1em 1em;
   }
 
   .trackTitle {
-    padding: 1.6em .1em 1em;
-
     h1 {
       font-size: 1.7rem;
     }
@@ -336,51 +364,9 @@ body {
       font-size: 1.2rem;
     }
   }
-}
 
-@include galaxy-4 {
-  .contentPanel {
-    max-width: 100%;
-  }
-
-  .liveTranscriptText {
-    font-size: 1.6rem;
-    padding: 1.6em .1em 1em;
-  }
-
-  .trackTitle {
-    padding: 1.6em .1em 1em;
-
-    h1 {
-      font-size: 1.7rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-    }
-  }
-}
-
-@include galaxy-5 {
-  .contentPanel {
-    max-width: 100%;
-  }
-
-  .liveTranscriptText {
-    font-size: 1.6rem;
-    padding: 1.6em .1em 1em;
-  }
-
-  .trackTitle {
-    padding: 1.6em .1em 1em;
-
-    h1 {
-      font-size: 1.7rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-    }
+  .upperModule {
+    height: 9rem;
   }
 }
 
@@ -390,13 +376,11 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     padding: 1.6em .1em 1em;
   }
 
   .trackTitle {
-    padding: 1.6em .1em 1em;
-
     h1 {
       font-size: 1.7rem;
     }
@@ -418,8 +402,6 @@ body {
   }
 
   .trackTitle {
-    padding: 1.6em .1em 1em;
-
     h1 {
       font-size: 1.7rem;
     }
@@ -435,23 +417,27 @@ body {
 @include xxs {
   .contentPanel {
     max-width: 100%;
+    padding: 0 5vw;
   }
 
   .liveTranscriptText {
-    font-size: 1.7rem;
-    padding: .3em .1em 1em;
+    font-size: 1.9rem;
   }
 
   #logo {
-    height: 2.6rem;
-    margin-left: 1.6rem;
+    height: 2.4rem;
     overflow: visible;
     position: unset;
-    width: 10rem;
+    width: 12rem;
   }
 
   .navbar {
-    padding: 2em 2em 2em 0;
+    height: 10rem;
+    padding: 0 5vw;
+  }
+
+  .responsiveFlower {
+    height: 40%;
   }
 
   .responsiveSprig {
@@ -463,10 +449,8 @@ body {
   }
 
   .trackTitle {
-    padding: 0 1rem;
-
     h1 {
-      font-size: 3.1rem;
+      font-size: 4rem;
     }
 
     h3 {
@@ -476,33 +460,41 @@ body {
 
   .trackTitle .mainHeader {
     h1 {
-      font-family: $font-stack-semibold;
       font-size: 4rem;
-      font-weight: 600;
       margin: 0 0 2rem;
     }
+  }
+
+  .upperModule {
+    height: 14rem;
+    margin: 1rem 0 6rem;
   }
 }
 
 @include xs {
   .contentPanel {
     max-width: 100%;
+    padding: 0 5vw;
   }
 
   .liveTranscriptText {
     font-size: 2rem;
-    padding: .3em .1em 1em;
   }
 
   #logo {
-    height: 2.6rem;
+    height: 2.4rem;
     overflow: visible;
     position: unset;
-    width: 13rem;
+    width: 12rem;
   }
 
   .navbar {
-    padding: 2.5em 7vw;
+    height: 10rem;
+    padding: 0 5vw;
+  }
+
+  .responsiveFlower {
+    height: 30%;
   }
 
   .responsiveSprig {
@@ -514,23 +506,25 @@ body {
   }
 
   .trackTitle {
-    padding: 0 1rem;
-
     h1 {
-      font-size: 3.1rem;
+      font-size: 4rem;
     }
 
     h3 {
       font-size: 1.5rem;
     }
+
+    padding: 2rem 0;
   }
 
   .trackTitle .mainHeader {
     h1 {
-      font-family: $font-stack-semibold;
-      font-size: 3rem;
-      font-weight: 600;
+      font-size: 4rem;
     }
+  }
+
+  .upperModule {
+    height: 15rem;
   }
 }
 
@@ -541,23 +535,28 @@ body {
 
   .contentPanel {
     max-width: 100%;
+    padding: 0 5vw;
   }
 
   .liveTranscriptText {
     font-size: 2rem;
-    padding: .3em .1em 1em;
   }
 
   #logo {
-    height: 2.6rem;
+    height: 2.4rem;
     margin: 0;
     overflow: visible;
     position: unset;
-    width: 13rem;
+    width: 12rem;
   }
 
   .navbar {
-    padding: 2.5em 7vw;
+    height: 10rem;
+    padding: 0 5vw;
+  }
+
+  .responsiveFlower {
+    height: 30%;
   }
 
   .responsiveSprig {
@@ -569,23 +568,25 @@ body {
   }
 
   .trackTitle {
-    padding: 1rem 2rem;
-
     h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
     }
 
     h3 {
       font-size: 2rem;
     }
+
+    padding: 2rem 0;
   }
 
   .trackTitle .mainHeader {
     h1 {
-      font-family: $font-stack-semibold;
-      font-size: 3rem;
-      font-weight: 600;
+      font-size: 5rem;
     }
+  }
+
+  .upperModule {
+    height: 18rem;
   }
 }
 
@@ -596,11 +597,16 @@ body {
 
   .contentPanel {
     max-width: 70%;
+    padding: 0 5vw;
   }
 
   .liveTranscriptText {
     font-size: 2.3rem;
-    padding: .3em .1em 1em;
+  }
+
+  .navbar {
+    height: 10rem;
+    padding: 0 5vw;
   }
 
   #logo {
@@ -611,6 +617,10 @@ body {
     width: 13rem;
   }
 
+  .responsiveFlower {
+    height: 50%;
+  }
+
   .responsiveSprig {
     height: 50%;
   }
@@ -620,23 +630,25 @@ body {
   }
 
   .trackTitle {
-    padding: 1rem 2rem;
-
     h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
     }
 
     h3 {
       font-size: 2rem;
     }
+
+    padding: 5rem 0;
+  }
+
+  .upperModule {
+    height: 18rem;
   }
 }
 
 .trackTitle .mainHeader {
   h1 {
-    font-family: $font-stack-semibold;
-    font-size: 3rem;
-    font-weight: 600;
+    font-size: 5rem;
   }
 }
 
@@ -646,12 +658,16 @@ body {
   }
 
   .contentPanel {
+    padding: 0 5vw;
     max-width: 70%;
   }
 
   .liveTranscriptText {
     font-size: 2.3rem;
-    padding: 1rem;
+  }
+
+  .responsiveFlower {
+    height: 60%;
   }
 
   .responsiveSprig {
@@ -663,8 +679,6 @@ body {
   }
 
   .trackTitle {
-    padding: 1rem 2rem;
-
     h1 {
       font-size: 3.5rem;
     }
@@ -673,17 +687,17 @@ body {
       font-size: 2rem;
     }
 
-    h4 {
-      font-family: 'Poppins Light', sans-serif;
-    }
+    padding: 9rem 0;
   }
 
   .trackTitle .mainHeader {
     h1 {
-      font-family: $font-stack-semibold;
-      font-size: 5rem;
-      font-weight: 600;
+      font-size: 6rem;
     }
+  }
+
+  .upperModule {
+    height: 24rem;
   }
 }
 
@@ -693,18 +707,21 @@ body {
   }
 
   .contentPanel {
-    margin-left: 5.6rem;
+    padding: 0 8vw;
     max-width: 70%;
   }
 
   .liveTranscriptText {
     font-size: 2.4rem;
-    padding: 1rem;
   }
 
   .navbar {
-    height: 10rem;
+    height: 14rem;
     padding: 0 8vw;
+  }
+
+  .responsiveFlower {
+    height: 70%;
   }
 
   .responsiveSprig {
@@ -716,8 +733,6 @@ body {
   }
 
   .trackTitle {
-    padding: 1rem 2rem;
-
     h1 {
       font-size: 3.5rem;
     }
@@ -729,8 +744,11 @@ body {
 
   .trackTitle .mainHeader {
     h1 {
-      font-family: $font-stack-semibold;
-      font-size: 6rem;
+      font-size: 7.5rem;
     }
+  }
+
+  .upperModule {
+    height: 26rem;
   }
 }

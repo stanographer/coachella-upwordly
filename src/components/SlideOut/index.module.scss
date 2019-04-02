@@ -1,9 +1,20 @@
+// Media queries
 @import '../../assets/styles/media-queries.scss';
 
+// Colors
+$almost-black: #08080d;
+$black: #000;
+$hot-pink: #ea005e;
+
+// Fonts
 $font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
 $font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
 $font-stack-semibold: 'Poppins Semibold', sans-serif;
 $font-stack-bold: 'Poppins Bold', sans-serif;
+
+@mixin easeOut($property) {
+  transition: $property .2s ease-out;
+}
 
 .contents {
   p {
@@ -11,10 +22,81 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
   }
 }
 
+.contentBlock {
+  a {
+    border-bottom: 1px solid $hot-pink;
+    color: $almost-black;
+    text-decoration: none;
+    @include easeOut(color);
+
+    &:active {
+      color: $hot-pink;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $hot-pink;
+      color: $hot-pink;
+      @include easeOut(color);
+    }
+  }
+
+  h3 {
+    margin: 2rem 0;
+  }
+
+  li {
+    font-family: $font-stack-light;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left: 2.4rem;
+    position: relative;
+
+    &::before {
+      background: $hot-pink;
+      border-radius: 50%;
+      content: '';
+      height: .8rem;
+      left: 0;
+      position: absolute;
+      top: .6rem;
+      width: .8rem;
+    }
+  }
+
+  p {
+    font-family: $font-stack-light;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  ul {
+    list-style-type: none;
+    position: relative;
+  }
+}
+
 .header {
   font-family: $font-stack-semibold;
   font-size: 3.4rem;
   letter-spacing: .05rem;
+  margin-bottom: 2rem;
+}
+
+.partnerLogo {
+  height: 3rem;
+  margin: 4rem 0;
+  width: 20rem;
+}
+
+.partnerLogos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 @include xxs {
@@ -23,13 +105,13 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
   }
 
   .drawerContent {
-    padding-top: 10rem;
+    padding: 8rem 5vw 3.2rem;
   }
 }
 
 @include xs {
   .contentBlock {
-    margin-bottom: 1rem;
+    padding: 0 3vw;
   }
 
   .drawerContent {
@@ -38,6 +120,10 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
 }
 
 @include sm {
+  .contentBlock {
+    padding: 0 1vw;
+  }
+
   .drawerContent {
     padding-left: 8vw;
     padding-right: 8vw;
@@ -46,12 +132,15 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
 
 @include md {
   .drawerContent {
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding-top: 10rem;
   }
 }
 
 @include lg {
+  .contentBlock {
+    padding: 0 3vw;
+  }
+
   .drawerContent {
     padding-left: 8vw;
     padding-right: 8vw;
@@ -59,6 +148,10 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
 }
 
 @include xl {
+  .contentBlock {
+    padding: 0 3vw;
+  }
+
   .drawerContent {
     padding-left: 8vw;
     padding-right: 8vw;

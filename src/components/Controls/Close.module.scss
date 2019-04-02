@@ -4,6 +4,13 @@ $drop-shadow: rgba(0, 0, 0, .14);
 @import '../../assets/styles/media-queries.scss';
 
 .icon {
+  >* {
+    left: 50%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+  }
   display: inline-block;
   filter: drop-shadow(0 1px 2px $drop-shadow);
   height: 4.8rem;
@@ -24,19 +31,29 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 .navButton {
-  top: 0;
+  align-items: center;
   right: 5vw;
-  display: inline-block;
-  filter: drop-shadow(0 1px 2px $drop-shadow);
+  display: flex;
   height: 4.8rem;
   opacity: 1;
   position: fixed;
   width: 4.8rem;
-  z-index: 1;
+  z-index: 21;
+
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0;
+  }
 }
 
 .location {
-  top: 2rem;
+  top: 7.5vw;
   z-index: 20;
 }
 
@@ -52,10 +69,8 @@ $drop-shadow: rgba(0, 0, 0, .14);
   }
 
   .location {
-    bottom: 1.4em;
+    top: 7.5vw;
     opacity: 1;
-    position: fixed;
-    right: 5vw;
   }
 }
 
@@ -66,10 +81,8 @@ $drop-shadow: rgba(0, 0, 0, .14);
   }
 
   .location {
-    bottom: 1.4rem;
+    top: 7.5vw;
     opacity: 1;
-    position: fixed;
-    right: 5vw;
   }
 }
 
@@ -80,24 +93,18 @@ $drop-shadow: rgba(0, 0, 0, .14);
   }
 
   .location {
-    bottom: 1.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.5vw;
   }
 }
 
 @include iphone-x {
   .icon {
-    height: 3.8rem;
-    width: 3.8rem;
+    height: 4.5rem;
+    width: 4.5rem;
   }
 
   .location {
-    bottom: 1.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.8vw;
   }
 }
 
@@ -108,37 +115,25 @@ $drop-shadow: rgba(0, 0, 0, .14);
   }
 
   .location {
-    bottom: 1.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.5vw;
   }
 }
 
 @include xxs {
   .location {
-    bottom: 1.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.5vw;
   }
 }
 
 @include xs {
   .location {
-    bottom: 2.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.5vw;
   }
 }
 
 @include sm {
   .location {
-    bottom: 2.4em;
-    opacity: 1;
-    position: fixed;
-    right: 5vw;
+    top: 7.5vw;
   }
 }
 
@@ -154,10 +149,7 @@ $drop-shadow: rgba(0, 0, 0, .14);
   }
 
   .location {
-    bottom: 3em;
-    opacity: 1;
-    position: fixed;
-    right: 8vw;
+    top: 7.5vw;
   }
 }
 
@@ -170,6 +162,5 @@ $drop-shadow: rgba(0, 0, 0, .14);
     bottom: 3.2em;
     opacity: 1;
     position: fixed;
-    right: 8vw;
   }
 }

@@ -14,7 +14,7 @@ import { InView } from 'react-intersection-observer';
 import styles from '../../index.module.scss';
 
 // Import SVG logo
-import Logo from '../Logo';
+import { CoachellaLogo } from '../Logos';
 
 // Import burger menu
 import { Burger } from '../Controls';
@@ -48,6 +48,7 @@ class Navigation extends React.Component {
 
     const component = mobile
       ? <MobileNav
+        isOpen={ isOpen }
         navTransparent={ this.navTransparent }
         navOpaque={ this.navOpaque }
         navbarFixed={ navbarFixed }
@@ -72,6 +73,7 @@ class Navigation extends React.Component {
 
 const MobileNav = props => {
   const {
+          isOpen,
           navOpaque,
           navTransparent,
           onScroll,
@@ -94,18 +96,12 @@ const MobileNav = props => {
           href="https://www.coachella.com/"
           id={ styles.logo }
         >
-          <Logo className={ styles.logoCoachella } />
+          <CoachellaLogo className={ styles.logoCoachella } />
         </NavbarBrand>
-        <Nav>
-          <NavItem>
-            <NavLink href="#">
-              <Burger
-                onClick={ toggleDrawer }
-                className={ styles.burger }
-              />
-            </NavLink>
-          </NavItem>
-        </Nav>
+        <Burger
+          onClick={ toggleDrawer }
+          className={ styles.burger }
+        />
       </Navbar>
       <InView
         as="span"
@@ -136,7 +132,7 @@ const FullNavbar = props => {
         onChange={ state => state ? navTransparent() : navOpaque() } />
       <Headroom
         downTolerance={ 50 }
-        calcHeightOnResize={ false }
+        calcHeightOnResize={ true }
         style={ {
           WebkitTransition: 'all .5s ease-in-out',
           MozTransition: 'all .5s ease-in-out',
@@ -159,12 +155,8 @@ const FullNavbar = props => {
             href="https://www.coachella.com/"
             id={ styles.logo }
           >
-            <Logo className={ styles.logoCoachella } />
+            <CoachellaLogo className={ styles.logoCoachella } />
           </NavbarBrand>
-          <Burger
-            onClick={ toggleDrawer }
-            className={ styles.burger }
-          />
           <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className={ styles.navItem }>

@@ -38,7 +38,10 @@ class App extends React.Component {
       userScrolled: false,
     };
 
+
     this.doc = connection.get('stanley', 'coachella');
+    this.elementRef = React.createRef();
+    this.bodyElement = React.createRef(); // For body scroll lock when modal is open.
 
     this.onLoaded = this.onLoaded.bind(this);
     this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -46,8 +49,10 @@ class App extends React.Component {
 
   componentDidMount() {
     document.title = 'Coachella Captions';
+    this.element = this.elementRef.current;
+    this.bodyElement = document.querySelector('body');
 
-    window.addEventListener('resize', this.resize.bind(this), false);
+      window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
   }
 
@@ -78,23 +83,31 @@ class App extends React.Component {
         userScrolled: false,
       });
     }
-    console.log('user scroll', this.state.userScrolled);
   };
 
+  // Detects a resize in the viewport, AKA detects whether the user is using mobile.
   resize = () => this.setState({ mobile: window.innerWidth <= 760 });
 
   // Toggles the drawer info page.
   toggleDrawer = () => {
     let { drawerOpen, navbarFixed } = this.state;
 
+    // Allows scrolling again on the body after closing modal.
     this.setState({
       drawerOpen: !drawerOpen,
       navbarFixed: !navbarFixed,
       transparentNav: false,
+    }, () => {
+      if (!drawerOpen) {
+        this.bodyElement.setAttribute('class', 'modal-open');
+      } else {
+        this.bodyElement.removeAttribute('class');
+      }
     });
   };
 
   // Starts auto-scrolling forcibly.
+  // Hides the scroll-down arrow on scroll.
   autoscroll = () => {
     setTimeout(() => {
       scroll.scrollToBottom({
@@ -116,14 +129,14 @@ class App extends React.Component {
     // Styles for the modal.
     const modalStyle = css`
       position: fixed;
-      top: 7.6rem;
+      top: 0;
       background-color: white;
       width: 100%;
       min-width: 100%;
-      min-height: 70%;
+      min-height: 100%;
      
       @media (max-width: 480px) {
-        width: 100%
+        width: 100vw;
         max-width: 100%;
         margin-bottom: 0;
         min-height: 100vh;
@@ -131,7 +144,7 @@ class App extends React.Component {
        }
        
        @media (max-width: 576px) {
-        width: 100%
+        width: 100vw;
         max-width: 100%;
         margin-bottom: 0;
         min-height: 100%;
@@ -139,11 +152,12 @@ class App extends React.Component {
        }
        
        @media (max-width: 768px) {
-        width: 100%
-        max-width: 100%;
-        margin-bottom: 0;
+        top: auto;
         min-height: 100%;
-        top: 7.6rem;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
        }
        
        @media (max-width: 992px) {
@@ -151,9 +165,10 @@ class App extends React.Component {
         top: 0;
        }`;
 
+    // ShareDB text area styles.
     const style = {
       color: '#000',
-      fontFamily: 'Poppins, sans-serif'
+      fontFamily: 'Poppins, sans-serif',
     };
 
     const {
@@ -187,15 +202,16 @@ class App extends React.Component {
           userScrolled={ userScrolled }
         />
         <Drawer
-          direction={ mobile ? 'right' : 'top' }
+          direction={ mobile ? 'left' : 'top' }
           modalElementClass={ modalStyle }
           onRequestClose={ this.toggleDrawer }
           open={ drawerOpen }
+          parentElement={ document.body }
         >
           <SlideOut closeModal={ this.toggleDrawer } />
         </Drawer>
         <div className={ styles.contentPanel }>
-          <Container className={ styles.captionBox } fluid>
+          <div className={ styles.captionBox }>
             <Row className={ styles.rowNoMargin }>
               <Col md={ 12 } className={ styles.colNoPadding }>
                 <div className={ styles.upperModuleWrapper }>
@@ -240,12 +256,14 @@ class App extends React.Component {
                   style={ { height: '1px' } }
                   as="div"
                   threshold={ .1 }
-                  onChange={ state => this.onScrollToBottom(state) }
+                  onChange={ !userScrolled
+                    ? state => this.onScrollToBottom(state)
+                    : null }
                 />
               </Col>
               <h1>{ this.state.scrollOff }</h1>
             </Row>
-          </Container>
+          </div>
           { arrowVisible && !navbarFixed
             ? <Arrow
               scrollDown={ () => {
