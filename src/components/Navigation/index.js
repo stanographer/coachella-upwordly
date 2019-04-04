@@ -6,7 +6,6 @@ import {
   Navbar,
   NavbarBrand,
   NavItem,
-  NavLink
 } from 'reactstrap';
 import Headroom from 'react-headroom';
 import 'intersection-observer';
@@ -17,7 +16,7 @@ import styles from '../../index.module.scss';
 import { CoachellaLogo } from '../Logos';
 
 // Import burger menu
-import { Burger } from '../Controls';
+import { Burger, Close } from '../Controls';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class Navigation extends React.Component {
 
   toggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   };
 
@@ -77,7 +76,7 @@ const MobileNav = props => {
           navOpaque,
           navTransparent,
           onScroll,
-          toggleDrawer
+          toggleDrawer,
         } = props;
 
   return (
@@ -99,7 +98,7 @@ const MobileNav = props => {
           <CoachellaLogo className={ styles.logoCoachella } />
         </NavbarBrand>
         <Burger
-          onClick={ toggleDrawer }
+          toggleModal={ toggleDrawer }
           className={ styles.burger }
         />
       </Navbar>
@@ -136,7 +135,7 @@ const FullNavbar = props => {
         style={ {
           WebkitTransition: 'all .5s ease-in-out',
           MozTransition: 'all .5s ease-in-out',
-          transition: 'all .5s ease-in-out'
+          transition: 'all .5s ease-in-out',
         } }
         wrapperStyle={ {
           backgroundColor: navbarFixed ? '#fff' : 'unset',
@@ -152,9 +151,12 @@ const FullNavbar = props => {
           fixed={ isOpen ? 'top' : '' }
           expand="md">
           <NavbarBrand
+            aria-label="Coachella Festival Homepage"
             href="https://www.coachella.com/"
             id={ styles.logo }
+            title="Coachella Festival Homepage"
           >
+            <span className={ styles.isVisuallyHidden }>Coachella</span>
             <CoachellaLogo className={ styles.logoCoachella } />
           </NavbarBrand>
           <Collapse isOpen={ isOpen } navbar>

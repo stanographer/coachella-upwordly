@@ -1,7 +1,22 @@
-$drop-shadow: rgba(0, 0, 0, .14);
+// Formatting
+@import '../../assets/styles/formatting.scss';
 
-// Media queries
-@import '../../assets/styles/media-queries.scss';
+.closeControls {
+  button {
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    outline: 0;
+    padding: 0;
+    text-align: left;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  position: absolute;
+}
 
 .icon {
   >* {
@@ -31,6 +46,8 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 .navButton {
+  @extend %invisibleButton;
+
   align-items: center;
   right: 5vw;
   display: flex;
@@ -39,22 +56,12 @@ $drop-shadow: rgba(0, 0, 0, .14);
   position: fixed;
   width: 4.8rem;
   z-index: 21;
-
-  button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: 0 0;
-    border: 0;
-    border-radius: 0;
-    cursor: pointer;
-    padding: 0;
-  }
 }
 
 .location {
+  left: 5vw;
   top: 7.5vw;
-  z-index: 20;
+  z-index: 21;
 }
 
 .stroke {
@@ -120,24 +127,41 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include xxs {
+  .closeControls {
+    display: none;
+  }
+
   .location {
     top: 7.5vw;
   }
 }
 
 @include xs {
+  .closeControls {
+    display: none;
+  }
+
   .location {
     top: 7.5vw;
   }
 }
 
 @include sm {
+  .closeControls {
+    display: none;
+  }
+
   .location {
     top: 7.5vw;
   }
 }
 
 @include md {
+  .closeControls {
+    right: 5vw;
+    top: 8rem;
+  }
+
   .navButton {
     display: none;
   }
@@ -154,6 +178,11 @@ $drop-shadow: rgba(0, 0, 0, .14);
 }
 
 @include xl {
+  .closeControls {
+    right: 13vw;
+    top: 8rem;
+  }
+
   .navButton {
     display: none;
   }

@@ -1,0 +1,33 @@
+
+// Media queries
+@import './media-queries';
+
+// Colors
+$almost-black: #08080d;
+$black: #000;
+$clear: rgba(255, 255, 255, 0);
+$drop-shadow: rgba(0, 0, 0, .14);
+$grey-darker: #2d2d31;
+$hot-pink: #ea005e;
+$white: #fff;
+
+// Fonts
+$font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
+$font-stack-black: 'Poppins Black', 'Helvetica Neue', sans-serif;
+$font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
+$font-stack-medium: 'Poppins Medium', 'Helvetica Neue', sans-serif;
+$font-stack-semibold: 'Poppins Semibold', sans-serif;
+$font-stack-bold: 'Poppins Bold', sans-serif;
+
+%invisibleButton {
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+}

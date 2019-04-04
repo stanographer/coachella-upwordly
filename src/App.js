@@ -1,8 +1,7 @@
 import React from 'react';
 import {
   Col,
-  Container,
-  Row
+  Row,
 } from 'reactstrap';
 import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
@@ -11,16 +10,15 @@ import { css } from 'emotion';
 import Drawer from 'react-drag-drawer';
 
 // Main assets
-import './assets/fonts/fonts.scss';
 import styles from './index.module.scss';
 
 // Modules
 import { Arrow } from './components/Controls';
+import { About, Captions, Partners } from './components/Pages';
 import BgVideo from './components/BgVideo';
 import { connection } from './components/ShareDB/connection';
 import Ornament from './components/Ornament';
 import Navigation from './components/Navigation';
-import ShareDBBinding from './components/ShareDB';
 import UpperModule from './components/UpperModule';
 import SlideOut from './components/SlideOut';
 
@@ -29,6 +27,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      activePage: 0,
       arrowVisible: false,
       drawerOpen: false,
       loading: true,
@@ -37,7 +36,6 @@ class App extends React.Component {
       transparentNav: true,
       userScrolled: false,
     };
-
 
     this.doc = connection.get('stanley', 'coachella');
     this.elementRef = React.createRef();
@@ -52,7 +50,7 @@ class App extends React.Component {
     this.element = this.elementRef.current;
     this.bodyElement = document.querySelector('body');
 
-      window.addEventListener('resize', this.resize.bind(this), false);
+    window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
   }
 
@@ -62,9 +60,34 @@ class App extends React.Component {
 
   onLoaded = () => {
     this.setState({
-      loading: false
+      loading: false,
     });
   };
+
+  // Starts auto-scrolling forcibly.
+  // Hides the scroll-down arrow on scroll.
+  autoscroll = () => {
+    setTimeout(() => {
+      scroll.scrollToBottom({
+        delay: 0,
+        duration: 100,
+        offset: 30,
+        isDynamic: true,
+        smooth: true,
+      });
+    }, 0);
+
+    this.setState({
+      arrowVisible: false,
+      userScrolled: false,
+    });
+  };
+
+  // Changes the active page based on menu controls.
+  handleActivePage = num => this.setState({ activePage: num });
+
+  // Handles setting local state externally.
+  handleSetState = state => this.setState({ ...state });
 
   // Initiatives an auto-scroll to the bottom once the div grows in size.
   onScrollToBottom = atBottom => !atBottom ? this.autoscroll() : null;
@@ -106,25 +129,6 @@ class App extends React.Component {
     });
   };
 
-  // Starts auto-scrolling forcibly.
-  // Hides the scroll-down arrow on scroll.
-  autoscroll = () => {
-    setTimeout(() => {
-      scroll.scrollToBottom({
-        delay: 0,
-        duration: 100,
-        offset: 30,
-        isDynamic: true,
-        smooth: true,
-      });
-    }, 0);
-
-    this.setState({
-      arrowVisible: false,
-      userScrolled: false,
-    });
-  };
-
   render() {
     // Styles for the modal.
     const modalStyle = css`
@@ -133,7 +137,7 @@ class App extends React.Component {
       background-color: white;
       width: 100%;
       min-width: 100%;
-      min-height: 100%;
+      min-height: 60%;
      
       @media (max-width: 480px) {
         width: 100vw;
@@ -161,18 +165,14 @@ class App extends React.Component {
        }
        
        @media (max-width: 992px) {
+        align-items: unset;
         min-height: 100%;
         top: 0;
        }`;
 
-    // ShareDB text area styles.
-    const style = {
-      color: '#000',
-      fontFamily: 'Poppins, sans-serif',
-    };
-
     const {
             arrowVisible,
+            activePage,
             drawerOpen,
             mobile,
             navbarFixed,
@@ -180,12 +180,35 @@ class App extends React.Component {
             userScrolled,
           } = this.state;
 
+    // These are the pages that can be loaded. As the user clicks
+    // on a menu item, a function is executed and a number
+    // is passed. Based on that number, the appropriate page
+    // is displayed.
+    const pages = {
+      0: <Captioning
+        doc={ this.doc }
+        thisState={ this.state }
+        functions={
+          {
+            autoscroll: this.autoscroll,
+            handleSetState: this.handleSetState,
+            onScrollToBottom: this.onScrollToBottom,
+            onUserScroll: this.onUserScroll,
+          }
+        }
+      />,
+      1: <About />,
+      2: <Partners />,
+    };
+
+    const page = pages[activePage];
+
     return (
       <div
         onClick={ () => {
           this.setState({
             arrowVisible: true,
-            scrollOff: true
+            scrollOff: true,
           });
         } }
       >
@@ -193,7 +216,7 @@ class App extends React.Component {
         <BgVideo />
         <Navigation
           arrowVisible={ arrowVisible }
-          closeModal={ this.toggleDrawer }
+          toggleModal={ this.toggleDrawer }
           drawerOpen={ drawerOpen }
           mobile={ mobile }
           navbarFixed={ navbarFixed }
@@ -208,75 +231,77 @@ class App extends React.Component {
           open={ drawerOpen }
           parentElement={ document.body }
         >
-          <SlideOut closeModal={ this.toggleDrawer } />
+          <SlideOut
+            toggleModal={ this.toggleDrawer }
+            handleActivePage={ this.handleSetState }
+          />
         </Drawer>
-        <div className={ styles.contentPanel }>
-          <div className={ styles.captionBox }>
-            <Row className={ styles.rowNoMargin }>
-              <Col md={ 12 } className={ styles.colNoPadding }>
-                <div className={ styles.upperModuleWrapper }>
-                  <UpperModule />
-                </div>
-              </Col>
-            </Row>
-            <Row className={ styles.rowNoMargin }
-                 onClick={ () => {
-                   this.setState({
-                     arrowVisible: true,
-                     scrollOff: true
-                   });
-                 } }>
-              <Col md={ 12 } className={ styles.colNoPadding }>
-                <div className={ styles.liveTranscriptText }
-                     onTouchMove={ () => {
-                       this.setState({
-                         arrowVisible: true
-                       });
-                     } }>
-                  <InView
-                    style={ {
-                      height: '3px',
-                      display: 'inline',
-                      position: 'absolute',
-                      bottom: '20em',
-                      overflow: 'hidden'
-                    } }
-                    as="span"
-                    threshold={ 1 }
-                    onChange={ state => this.onUserScroll(state) }
-                  />
-                  <ShareDBBinding
-                    cssClass={ styles.liveTranscriptText }
-                    style={ style }
-                    doc={ this.doc }
-                    flag='≈'
-                    elementType="div" />
-                </div>
-                <InView
-                  style={ { height: '1px' } }
-                  as="div"
-                  threshold={ .1 }
-                  onChange={ !userScrolled
-                    ? state => this.onScrollToBottom(state)
-                    : null }
-                />
-              </Col>
-              <h1>{ this.state.scrollOff }</h1>
-            </Row>
-          </div>
-          { arrowVisible && !navbarFixed
-            ? <Arrow
-              scrollDown={ () => {
-                this.setState({
-                  userScrolled: false,
-                  arrowVisible: false,
-                }, () => this.autoscroll());
-              } } />
-            : '' }
-        </div>
+        { page }
       </div>
     );
   }
 }
+
+const Captioning = ({ doc, functions, thisState }) => {
+  const { arrowVisible, navbarFixed, userScrolled } = thisState;
+
+  return (
+    <div className={ styles.contentPanel }>
+      <div className={ styles.captionBox }>
+        <Row className={ styles.rowNoMargin }>
+          <Col md={ 12 } className={ styles.colNoPadding }>
+            <div className={ styles.upperModuleWrapper }>
+              <UpperModule />
+            </div>
+          </Col>
+        </Row>
+        <Row className={ styles.rowNoMargin }
+             onClick={ () => {
+               functions.handleSetState({
+                 arrowVisible: true,
+                 scrollOff: true,
+               });
+             } }>
+          <Col md={ 12 } className={ styles.colNoPadding }>
+            <div className={ styles.liveTranscriptText }
+                 onClick={ () => {
+                   functions.handleSetState({
+                     arrowVisible: true,
+                   });
+                 } }>
+              <InView
+                style={ {
+                  height: '3px',
+                  display: 'inline',
+                  position: 'absolute',
+                  bottom: '20em',
+                  overflow: 'hidden',
+                } }
+                as="span"
+                threshold={ 1 }
+                onChange={ state => functions.onUserScroll(state) }
+              />
+              <Captions
+                doc={ doc }
+                styles={ styles }
+              />
+            </div>
+            <InView
+              style={ { height: '1px' } }
+              as="div"
+              threshold={ .1 }
+              onChange={ !userScrolled
+                ? state => functions.onScrollToBottom(state)
+                : null }
+            />
+          </Col>
+        </Row>
+      </div>
+      { arrowVisible && !navbarFixed
+        ? <Arrow scrollDown={ functions.autoscroll } />
+        : '' }
+    </div>
+  );
+};
 
 export default App;

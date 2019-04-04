@@ -1,16 +1,17 @@
 import React from 'react';
-// import TenFiftyImage from '../../assets/images/ten-fifty.webp';
+import TenFiftyImage from '../../assets/images/tenfifty.png';
 
 const TenFiftyLogo = ({ stylingClass }) => {
   return (
     <img
-      style={ {
-        userSelect: 'none',
-        cursor: 'zoom-in'
-      } }
       alt="Ten Fifty Entertainment Logo"
       aria-label="Ten Fifty Entertainment Logo"
-      className={ stylingClass }
+      className={ stylingClass.tenFiftyLogo }
+      src={ TenFiftyImage }
+      style={ {
+        userSelect: 'none',
+        cursor: 'zoom-in',
+      } }
     />
   );
 };

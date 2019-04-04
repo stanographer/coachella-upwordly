@@ -1,5 +1,16 @@
 import React from 'react';
 
+const buttonStyles = {
+  appearance: 'none',
+  background: '0 0',
+  border: '0',
+  borderRadius: '0',
+  cursor: 'pointer',
+  outline: '0',
+  padding: '0',
+  textAlign: 'left',
+};
+
 const Hamburger =
         ({
            circleID,
@@ -7,10 +18,10 @@ const Hamburger =
            href,
            path,
            styles,
-           title
+           title,
          }) => {
           return (
-            <button aria-label="Open nav">
+            <button aria-label="Open nav" style={ buttonStyles }>
               <span className={ styles.location } style={ { transform: 'matrix(1, 0, 0, 1, 0, 0)' } }>
                 <i className={ styles.icon }>
                   <svg
@@ -25,7 +36,7 @@ const Hamburger =
                         cy="24"
                         r="24" />
                       <filter
-                        filter={ filter }
+                        id={ filter }
                         width="114.6%"
                         height="114.6%"
                         x="-7.3%"

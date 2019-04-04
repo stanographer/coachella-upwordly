@@ -23,14 +23,14 @@ const Arrow = props => {
 
 const Close = props => {
   return (
-    <div onClick={ () => props.closeModal() }>
+    <div onClick={ () => props.toggleModal() }>
       <Button
         aria-label="Close Modal"
-        circleID="hamburgerB"
+        circleID="exitCircle"
         filter="exitFilter"
         filterID="hamburgerA"
         href="exitCircle"
-        id="hamburgerB"
+        id="exitCircle"
         path="M21.25 20.25l9.5 9.5M21.25 29.75l9.5-9.5"
         styles={ closeStyles }
         title="Close Modal"
@@ -41,7 +41,7 @@ const Close = props => {
 
 const Burger = props => {
   return (
-    <div className={ closeStyles.navButton } onClick={ () => props.onClick() }>
+    <div className={ closeStyles.navButton } onClick={ () => props.toggleModal() }>
       <Hamburger
         aria-label="Burger Menu"
         circleID="hamburgerB"

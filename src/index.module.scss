@@ -1,20 +1,5 @@
-// Colors
-
-$almost-black: #08080d;
-$black: #000;
-$grey-darker: #2d2d31;
-$white: #fff;
-$hot-pink: #ea005e;
-$clear: rgba(255, 255, 255, 0);
-
-// Fonts
-$font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
-$font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
-$font-stack-semibold: 'Poppins Semibold', sans-serif;
-$font-stack-medium: 'Poppins Medium', sans-serif;
-
-// Media queries
-@import './assets/styles/media-queries.scss';
+// Formatting
+@import './assets/styles/formatting.scss';
 
 body {
   background-color: $white;
@@ -274,7 +259,7 @@ body {
 
 .trackTitle .mainHeader {
   h1 {
-    font-family: $font-stack-semibold;
+    font-family: $font-stack;
     font-weight: 600;
   }
 }
@@ -707,7 +692,7 @@ body {
   }
 
   .contentPanel {
-    padding: 0 8vw;
+    padding: 0 13vw;
     max-width: 70%;
   }
 
@@ -717,7 +702,7 @@ body {
 
   .navbar {
     height: 14rem;
-    padding: 0 8vw;
+    padding: 0 13vw;
   }
 
   .responsiveFlower {

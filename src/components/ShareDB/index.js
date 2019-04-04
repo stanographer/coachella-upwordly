@@ -13,7 +13,7 @@ function ShareDBBinding(props) {
       if (err) {
         setText('There was a connection error: ' + err);
       }
-    });
+    }, []);
 
     // Load document and bind it to local snapshot.
     doc.on('load', () => {
@@ -34,7 +34,7 @@ function ShareDBBinding(props) {
       doc.destroy();
       binding = null;
     };
-  }, []);
+  });
 
   return (
     <div

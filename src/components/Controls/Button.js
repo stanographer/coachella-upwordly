@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ filter, href, id, path, styles, title }) => {
   return (
-    <span className={ styles.location }
-          style={ { transform: 'matrix(1, 0, 0, 1, 0, 0)' } }>
+    <span style={ { transform: 'matrix(1, 0, 0, 1, 0, 0)' } }>
       <i className={ styles.icon }>
         <svg
           viewBox="0 0 52 52"

@@ -1,28 +1,10 @@
-// Media queries
-@import '../../assets/styles/media-queries.scss';
-
-// Colors
-$almost-black: #08080d;
-$black: #000;
-$hot-pink: #ea005e;
-
-// Fonts
-$font-stack: 'Poppins', 'Helvetica Neue', sans-serif;
-$font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
-$font-stack-semibold: 'Poppins Semibold', sans-serif;
-$font-stack-bold: 'Poppins Bold', sans-serif;
+@import '../../assets/styles/formatting.scss';
 
 @mixin easeOut($property) {
   transition: $property .2s ease-out;
 }
 
-.contents {
-  p {
-    font-size: 1.3rem;
-  }
-}
-
-.contentBlock {
+@mixin sectionContent {
   a {
     border-bottom: 1px solid $hot-pink;
     color: $almost-black;
@@ -65,18 +47,32 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
   }
 
   p {
-    font-family: $font-stack-light;
-    font-size: 1.6rem;
+    font-family: $font-stack;
     font-weight: 300;
     line-height: 1.5;
-    margin: 2rem 0;
     position: relative;
   }
 
   ul {
     list-style-type: none;
+    padding-inline-start: 0;
     position: relative;
   }
+}
+
+.contents {
+  section {
+    font-weight: 300;
+  }
+  transition: opacity .01s ease-in;
+}
+
+.contentBlock {
+  @include sectionContent;
+}
+
+.sectionHeader {
+  padding: 0 0 4rem;
 }
 
 .header {
@@ -86,17 +82,89 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
   margin-bottom: 2rem;
 }
 
+.linkList {
+  li {
+    @extend %invisibleButton;
+
+    button {
+      font-family: $font-stack;
+      font-size: 3.5rem;
+      font-weight: 600;
+      outline: 0;
+      padding: 2.4rem 1.6rem;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.mobileCactus {
+  bottom: 0;
+  position: fixed;
+  right: 0;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  width: 18.6rem;
+  z-index: 21;
+}
+
 .partnerLogo {
   height: 3rem;
   margin: 4rem 0;
   width: 20rem;
 }
 
-.partnerLogos {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+.tenFiftyLogo {
+  height: 5rem;
+  margin: 2rem 0;
+  width: 20rem;
+}
+
+.whiteContentWrapper {
+  @include sectionContent;
+
+  .h3,
+  h3 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin: 0;
+  }
+  background-color: $white;
+  display: block;
+  max-width: 70%;
+  padding: 8rem 20.8rem 8rem 13vw;
+}
+
+li {
+  font-size: 1.8rem;
+}
+
+p {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  font-size: 1.8rem;
+  margin-top: 8rem;
+}
+
+section {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.isVisuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 @include xxs {
@@ -107,54 +175,138 @@ $font-stack-bold: 'Poppins Bold', sans-serif;
   .drawerContent {
     padding: 8rem 5vw 3.2rem;
   }
+
+  .whiteContentWrapper {
+    @include sectionContent;
+
+    .h3,
+    h3 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin: 0;
+    }
+    background-color: $white;
+    display: block;
+    max-width: 100%;
+    padding: 4.8rem 5vw;
+  }
+
+  li {
+    font-size: 1.8rem;
+  }
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    font-size: 1.6rem;
+    margin-top: 8rem;
+  }
 }
 
 @include xs {
-  .contentBlock {
-    padding: 0 3vw;
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 3rem 0 8rem;
   }
 
   .drawerContent {
-    padding-top: 10rem;
+    padding-top: 3rem;
   }
 }
 
 @include sm {
-  .contentBlock {
-    padding: 0 1vw;
-  }
-
   .drawerContent {
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding-top: 3rem;
   }
 }
 
 @include md {
   .drawerContent {
-    padding-top: 10rem;
+    padding-top: 3rem;
+  }
+
+  .mobileCactus {
+    display: inline-block;
   }
 }
 
 @include lg {
-  .contentBlock {
-    padding: 0 3vw;
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 5.4rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 3rem 0 8rem;
   }
 
   .drawerContent {
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding: 4vh 8vw;
+  }
+
+  .mobileCactus {
+    display: none;
+  }
+
+  .whiteContentWrapper{
+    max-width: 70%;
   }
 }
 
 @include xl {
-  .contentBlock {
-    padding: 0 3vw;
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 8.8rem;
+        font-weight: 600;
+      }
+
+      padding-top: 4rem;
+    }
+
+    section {
+      font-size: 1.8rem;
+      font-weight: 300;
+      padding-top: 2.4rem;
+    }
+
+    padding: 5rem 0 8rem;
+    transition: opacity .01s ease-in;
   }
 
   .drawerContent {
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding: 4vw 13vw;
+  }
+
+  .mobileCactus {
+    display: none;
   }
 }
-
