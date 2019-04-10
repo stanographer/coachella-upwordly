@@ -162,22 +162,26 @@ const FullNavbar = props => {
           <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className={ styles.navItem }>
-                <button
-                  className={ styles.navLink }
-                  type="button"
-                  aria-label="Music"
-                  rel="noopener noreferrer">
-                  <span>MUSIC</span>
-                </button>
+                <form action="https://www.coachella.com/lineup/#/artists/alphabetical">
+                  <button
+                    className={ styles.navLink }
+                    type="submit"
+                    aria-label="Music"
+                    rel="noopener noreferrer">
+                    <span>MUSIC</span>
+                  </button>
+                </form>
               </NavItem>
               <NavItem className={ styles.navItem }>
-                <button
-                  className={ styles.navLink }
-                  type="button"
-                  aria-label="ADA"
-                  rel="noopener noreferrer">
-                  <span>ADA</span>
-                </button>
+                <form action="https://www.coachella.com/ada">
+                  <button
+                    className={ styles.navLink }
+                    type="submit"
+                    aria-label="ADA"
+                    rel="noopener noreferrer">
+                    <span>ADA</span>
+                  </button>
+                </form>
               </NavItem>
               <NavItem className={ styles.navItem }>
                 <button

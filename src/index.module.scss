@@ -161,7 +161,7 @@ body {
   }
 
   color: $almost-black !important;
-  font-family: $font-stack-medium;
+  font-family: $font-stack;
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: .18rem !important;
@@ -269,6 +269,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   color: $grey-darker;
+  display: table-row-group;
   margin: 6rem 0 3rem;
   position: relative;
 }
@@ -305,6 +306,7 @@ body {
 
     h3 {
       font-size: 1.2rem;
+      padding: 1.2rem 0;
     }
   }
 }
@@ -326,6 +328,7 @@ body {
 
     h3 {
       font-size: 1.2rem;
+      padding: 1.2rem 0;
     }
   }
 }
@@ -347,11 +350,8 @@ body {
 
     h3 {
       font-size: 1.2rem;
+      padding: 1.2rem 0;
     }
-  }
-
-  .upperModule {
-    height: 9rem;
   }
 }
 
@@ -372,6 +372,7 @@ body {
 
     h3 {
       font-size: 1.2rem;
+      padding: 1.2rem 0;
     }
   }
 }
@@ -393,6 +394,7 @@ body {
 
     h3 {
       font-size: 1.2rem;
+      padding: 1.2rem 0;
     }
   }
 }
@@ -407,6 +409,7 @@ body {
 
   .liveTranscriptText {
     font-size: 1.9rem;
+    padding-bottom: 1.2rem;
   }
 
   #logo {
@@ -440,6 +443,7 @@ body {
 
     h3 {
       font-size: 1.5rem;
+      padding: 1.2rem 0;
     }
   }
 
@@ -448,11 +452,6 @@ body {
       font-size: 4rem;
       margin: 0 0 2rem;
     }
-  }
-
-  .upperModule {
-    height: 14rem;
-    margin: 1rem 0 6rem;
   }
 }
 
@@ -497,6 +496,7 @@ body {
 
     h3 {
       font-size: 1.5rem;
+      padding: 1.2rem 0;
     }
 
     padding: 2rem 0;
@@ -506,10 +506,6 @@ body {
     h1 {
       font-size: 4rem;
     }
-  }
-
-  .upperModule {
-    height: 15rem;
   }
 }
 
@@ -524,7 +520,8 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    padding-bottom: 1.6rem;
   }
 
   #logo {
@@ -559,6 +556,7 @@ body {
 
     h3 {
       font-size: 2rem;
+      padding: 1.2rem 0;
     }
 
     padding: 2rem 0;
@@ -568,10 +566,6 @@ body {
     h1 {
       font-size: 5rem;
     }
-  }
-
-  .upperModule {
-    height: 18rem;
   }
 }
 
@@ -586,7 +580,8 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
+    padding-bottom: 1.7rem;
   }
 
   .navbar {
@@ -621,13 +616,10 @@ body {
 
     h3 {
       font-size: 2rem;
+      padding: 1.2rem 0;
     }
 
     padding: 5rem 0;
-  }
-
-  .upperModule {
-    height: 18rem;
   }
 }
 
@@ -670,6 +662,7 @@ body {
 
     h3 {
       font-size: 2rem;
+      padding: 1.2rem 0;
     }
 
     padding: 9rem 0;
@@ -679,10 +672,6 @@ body {
     h1 {
       font-size: 6rem;
     }
-  }
-
-  .upperModule {
-    height: 24rem;
   }
 }
 
@@ -697,11 +686,12 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 2.4rem;
+    font-size: 2.9rem;
+    padding-bottom: 2rem;
   }
 
   .navbar {
-    height: 14rem;
+    height: 10rem;
     padding: 0 13vw;
   }
 
@@ -724,16 +714,13 @@ body {
 
     h3 {
       font-size: 2rem;
+      padding: 1.2rem 0;
     }
   }
 
   .trackTitle .mainHeader {
     h1 {
-      font-size: 7.5rem;
+      font-size: 8.8rem;
     }
-  }
-
-  .upperModule {
-    height: 26rem;
   }
 }

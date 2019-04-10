@@ -34,7 +34,7 @@ function ShareDBBinding(props) {
       doc.destroy();
       binding = null;
     };
-  });
+  }, []);
 
   return (
     <div

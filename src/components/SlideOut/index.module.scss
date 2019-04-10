@@ -205,6 +205,109 @@ section {
     margin-top: 8rem;
   }
 }
+@include iphone-4 {
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 3rem 0 8rem;
+  }
+}
+
+@include iphone-5 {
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 3rem 0 8rem;
+  }
+}
+
+@include iphone-6-up {
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding: 4rem 0 11rem;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 3rem 0 8rem;
+  }
+}
+@include iphone-xr-max {
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 4rem 0 11rem;
+  }
+}
+
+@include iphone-x {
+  .contents {
+    header {
+      .h1,
+      h1 {
+        font-size: 4.3rem;
+        font-weight: 600;
+      }
+
+      padding-top: 0;
+    }
+
+    section {
+      font-size: 1.8rem;
+      padding-top: 2.4rem;
+    }
+
+    padding: 4rem 0 11rem;
+  }
+}
 
 @include xs {
   .contents {
@@ -232,8 +335,12 @@ section {
 }
 
 @include sm {
+  .contents {
+    padding: 4rem 0 11rem;
+  }
+
   .drawerContent {
-    padding-top: 3rem;
+    padding: 3rem;
   }
 }
 

@@ -1,7 +1,7 @@
 @import './assets/styles/formatting.scss';
 
 html {
-  font-size: 11px;
+  font-size: 62.5%;
 }
 
 html, body {
@@ -36,7 +36,7 @@ html, body {
 
 @include lg {
   .css-3pxmmn {
-    top: 7.9vw !important;
+    top: 5.4vw !important;
   }
 }
 

@@ -4,11 +4,12 @@ $drop-shadow: rgba(0, 0, 0, .14);
 @import '../../assets/styles/media-queries.scss';
 
 .icon {
-  display: inline-block;
+  bottom: 5vh;
   filter: drop-shadow(0 1px 2px $drop-shadow);
   height: 4.8rem;
   opacity: 1;
-  position: relative;
+  position: fixed;
+  right: 5vw;
   width: 4.8rem;
 }
 

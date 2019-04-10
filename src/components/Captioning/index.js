@@ -1,18 +1,17 @@
 import React from 'react';
-import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
 import {
   Col,
-  Row,
+  Row
 } from 'reactstrap';
 import { connection } from '../ShareDB/connection';
 import styles from '../../index.module.scss';
 import UpperModule from '../UpperModule';
 import ShareDBBinding from '../ShareDB';
 
-const Captions = ({ functions, thisState }) => {
-  const doc = connection.get('stanley', 'coachella');
+const Captioning = ({ functions, thisState }) => {
   const { userScrolled } = thisState;
+  const doc = connection.get('stanley', 'coachella');
 
   // ShareDB text area styles.
   const style = {
@@ -25,7 +24,9 @@ const Captions = ({ functions, thisState }) => {
       <div className={ styles.captionBox }>
         <Row className={ styles.rowNoMargin }>
           <Col md={ 12 } className={ styles.colNoPadding }>
-            <UpperModule />
+            <div className={ styles.upperModuleWrapper }>
+              <UpperModule />
+            </div>
           </Col>
         </Row>
         <Row className={ styles.rowNoMargin }
@@ -76,4 +77,4 @@ const Captions = ({ functions, thisState }) => {
   );
 };
 
-export default Captions;
+export default Captioning;

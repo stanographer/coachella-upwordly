@@ -1,26 +1,19 @@
+// Vitals
 import React from 'react';
-import {
-  Col,
-  Row,
-} from 'reactstrap';
-import 'intersection-observer';
-import { InView } from 'react-intersection-observer';
 import { animateScroll as scroll } from 'react-scroll/modules';
 import { css } from 'emotion';
 import Drawer from 'react-drag-drawer';
 
-// Main assets
-import styles from './index.module.scss';
-
 // Modules
 import { Arrow } from './components/Controls';
 import { About, Captions, Partners } from './components/Pages';
-import BgVideo from './components/BgVideo';
-import { connection } from './components/ShareDB/connection';
-import Ornament from './components/Ornament';
+
+// Visual Components
 import Navigation from './components/Navigation';
-import UpperModule from './components/UpperModule';
-import SlideOut from './components/SlideOut';
+import Ornament from './components/Ornament';
+import BgVideo from './components/BgVideo';
+
+const SlideOut = React.lazy(() => import('./components/SlideOut'));
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +30,6 @@ class App extends React.Component {
       userScrolled: false,
     };
 
-    this.doc = connection.get('stanley', 'coachella');
     this.elementRef = React.createRef();
     this.bodyElement = React.createRef(); // For body scroll lock when modal is open.
 
@@ -185,8 +177,7 @@ class App extends React.Component {
     // is passed. Based on that number, the appropriate page
     // is displayed.
     const pages = {
-      0: <Captioning
-        doc={ this.doc }
+      0: <Captions
         thisState={ this.state }
         functions={
           {
@@ -231,77 +222,20 @@ class App extends React.Component {
           open={ drawerOpen }
           parentElement={ document.body }
         >
-          <SlideOut
-            toggleModal={ this.toggleDrawer }
-            handleActivePage={ this.handleSetState }
-          />
+          <React.Suspense fallback={ <div /> }>
+            <SlideOut
+              toggleModal={ this.toggleDrawer }
+              handleActivePage={ this.handleSetState }
+            />
+          </React.Suspense>
         </Drawer>
         { page }
+        { arrowVisible && !navbarFixed && activePage === 0
+          ? <Arrow scrollDown={ this.autoscroll } />
+          : '' }
       </div>
     );
   }
 }
-
-const Captioning = ({ doc, functions, thisState }) => {
-  const { arrowVisible, navbarFixed, userScrolled } = thisState;
-
-  return (
-    <div className={ styles.contentPanel }>
-      <div className={ styles.captionBox }>
-        <Row className={ styles.rowNoMargin }>
-          <Col md={ 12 } className={ styles.colNoPadding }>
-            <div className={ styles.upperModuleWrapper }>
-              <UpperModule />
-            </div>
-          </Col>
-        </Row>
-        <Row className={ styles.rowNoMargin }
-             onClick={ () => {
-               functions.handleSetState({
-                 arrowVisible: true,
-                 scrollOff: true,
-               });
-             } }>
-          <Col md={ 12 } className={ styles.colNoPadding }>
-            <div className={ styles.liveTranscriptText }
-                 onClick={ () => {
-                   functions.handleSetState({
-                     arrowVisible: true,
-                   });
-                 } }>
-              <InView
-                style={ {
-                  height: '3px',
-                  display: 'inline',
-                  position: 'absolute',
-                  bottom: '20em',
-                  overflow: 'hidden',
-                } }
-                as="span"
-                threshold={ 1 }
-                onChange={ state => functions.onUserScroll(state) }
-              />
-              <Captions
-                doc={ doc }
-                styles={ styles }
-              />
-            </div>
-            <InView
-              style={ { height: '1px' } }
-              as="div"
-              threshold={ .1 }
-              onChange={ !userScrolled
-                ? state => functions.onScrollToBottom(state)
-                : null }
-            />
-          </Col>
-        </Row>
-      </div>
-      { arrowVisible && !navbarFixed
-        ? <Arrow scrollDown={ functions.autoscroll } />
-        : '' }
-    </div>
-  );
-};
 
 export default App;

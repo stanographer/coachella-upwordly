@@ -17,7 +17,7 @@ const About = () => {
               <header
                 aria-label="Live Captioning Header"
                 className={ mainStyles.mainHeader }>
-                <h1>Live Captioning</h1>
+                <h1>About Live Captioning</h1>
               </header>
               <section>
                 Coachella welcomes attendees with disabilities. We are dedicated to continually improving our efforts to

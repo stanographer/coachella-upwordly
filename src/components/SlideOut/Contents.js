@@ -37,7 +37,7 @@ const Contents = ({ toggleModal, handleActivePage }) => {
               activePage: 0
             })
           } }>
-            <span>Back</span>
+            <span>Captioning</span>
           </button>
         </li>
       </ul>
