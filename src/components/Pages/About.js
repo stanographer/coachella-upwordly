@@ -3,7 +3,7 @@ import {
   Col,
   Row,
 } from 'reactstrap';
-import styles from '../SlideOut/index.module.scss';
+import styles from '../SlideOut/SlideOut.module.scss';
 import mainStyles from '../../index.module.scss';
 
 

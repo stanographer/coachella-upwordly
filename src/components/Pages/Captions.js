@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
 import {
@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import { connection } from '../ShareDB/connection';
 import styles from '../../index.module.scss';
+import secStyles from '../SlideOut/SlideOut.module.scss';
 import UpperModule from '../UpperModule';
 import ShareDBBinding from '../ShareDB';
 
@@ -21,13 +22,16 @@ const Captions = ({ functions, thisState }) => {
   };
 
   return (
+    <Fragment>
     <div className={ styles.contentPanel }>
-      <div className={ styles.captionBox }>
+      <div className={ secStyles.contents }>
         <Row className={ styles.rowNoMargin }>
           <Col md={ 12 } className={ styles.colNoPadding }>
             <UpperModule />
           </Col>
         </Row>
+      </div>
+    </div>
         <Row className={ styles.rowNoMargin }
              onClick={ () => {
                functions.handleSetState({
@@ -36,7 +40,7 @@ const Captions = ({ functions, thisState }) => {
                });
              } }>
           <Col md={ 12 } className={ styles.colNoPadding }>
-            <div className={ styles.liveTranscriptText }
+            <div className={ secStyles.whiteContentWrapper }
                  onClick={ () => {
                    functions.handleSetState({
                      arrowVisible: true,
@@ -71,8 +75,7 @@ const Captions = ({ functions, thisState }) => {
             />
           </Col>
         </Row>
-      </div>
-    </div>
+    </Fragment>
   );
 };
 

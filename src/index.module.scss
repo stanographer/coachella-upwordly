@@ -83,7 +83,7 @@ body {
   line-height: 1.5em;
   margin: 0;
   min-height: unset;
-  overflow: scroll;
+  overflow: hidden;
   text-align: left;
   text-shadow: unset !important;
   white-space: pre-wrap;
@@ -361,8 +361,8 @@ body {
   }
 
   .liveTranscriptText {
-    font-size: 1.9rem;
-    padding: 1.6em .1em 1em;
+    font-size: 2rem;
+    padding: 0 .1em 1em;
   }
 
   .trackTitle {

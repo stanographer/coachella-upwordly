@@ -40,7 +40,7 @@ function ShareDBBinding(props) {
     <div
       className={ cssClass || '' }
       style={ style || '' }>
-      { text }
+      { text || 'Loading...' }
     </div>
   );
 }

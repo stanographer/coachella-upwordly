@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.module.scss';
+import styles from './SlideOut.module.scss';
 import PropTypes from 'prop-types';
 
 const Contents = ({ toggleModal, handleActivePage }) => {

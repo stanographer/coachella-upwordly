@@ -72,7 +72,6 @@ class Navigation extends React.Component {
 
 const MobileNav = props => {
   const {
-          isOpen,
           navOpaque,
           navTransparent,
           onScroll,
@@ -85,7 +84,7 @@ const MobileNav = props => {
         as="div"
         style={ { height: '2px' } }
         threshold={ .1 }
-        onChange={ state => state ? navTransparent() : navOpaque() } />
+        onChange={ state => state ? navTransparent : navOpaque } />
       <Navbar
         className={ styles.navbar }
         color="light"

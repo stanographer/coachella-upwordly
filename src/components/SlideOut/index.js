@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styles from './index.module.scss';
+import styles from './SlideOut.module.scss';
 import closeButtonStyles from '../Controls/Close.module.scss';
 import { Close } from '../Controls';
 import Contents from './Contents';
