@@ -19,7 +19,7 @@ class Navigation extends React.Component {
     this.state = {
       isOpen: false,
       mobileNav: false,
-      transparentNav: true
+      transparentNav: true,
     };
   }
 
@@ -31,7 +31,7 @@ class Navigation extends React.Component {
 
   toggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   };
 
@@ -98,7 +98,7 @@ const FullNavbar = props => {
     isOpen,
     navbarFixed,
     toggleDrawer,
-    transparentNav
+    transparentNav,
   } = props;
 
   return (
@@ -115,12 +115,12 @@ const FullNavbar = props => {
         style={{
           WebkitTransition: "all .5s ease-in-out",
           MozTransition: "all .5s ease-in-out",
-          transition: "all .5s ease-in-out"
+          transition: "all .5s ease-in-out",
         }}
         wrapperStyle={{
           backgroundColor: navbarFixed ? "#fff" : "unset",
           position: navbarFixed ? "fixed" : "relative",
-          zIndex: navbarFixed ? "1" : "unset"
+          zIndex: navbarFixed ? "1" : "unset",
         }}
       >
         <Navbar
@@ -190,7 +190,7 @@ const FullNavbar = props => {
 
 Navigation.propTypes = {
   headroomDisabled: PropTypes.bool,
-  toggleDrawer: PropTypes.func
+  toggleDrawer: PropTypes.func,
 };
 
 export default Navigation;
