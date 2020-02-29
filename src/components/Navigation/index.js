@@ -39,144 +39,150 @@ class Navigation extends React.Component {
     const { isOpen, transparentNav } = this.state;
     const { mobile, navbarFixed, toggleDrawer } = this.props;
 
-    const component = mobile ? (
-      <MobileNav
-        isOpen={isOpen}
-        navTransparent={this.navTransparent}
-        navOpaque={this.navOpaque}
-        navbarFixed={navbarFixed}
-        toggleDrawer={toggleDrawer}
-        transparentNav={transparentNav}
-        onScroll={this.onScroll}
+    const component = mobile
+      ? <MobileNav
+        isOpen={ isOpen }
+        navTransparent={ this.navTransparent }
+        navOpaque={ this.navOpaque }
+        navbarFixed={ navbarFixed }
+        toggleDrawer={ toggleDrawer }
+        transparentNav={ transparentNav }
+        onScroll={ this.onScroll }
       />
-    ) : (
-      <FullNavbar
-        navTransparent={this.navTransparent}
-        navOpaque={this.navOpaque}
-        isOpen={isOpen}
-        navbarFixed={navbarFixed}
-        toggleDrawer={toggleDrawer}
-        transparentNav={transparentNav}
-      />
-    );
+      : <FullNavbar
+        navTransparent={ this.navTransparent }
+        navOpaque={ this.navOpaque }
+        isOpen={ isOpen }
+        navbarFixed={ navbarFixed }
+        toggleDrawer={ toggleDrawer }
+        transparentNav={ transparentNav }
+      />;
 
-    return component;
+    return (
+      component
+    );
   }
 }
 
 const MobileNav = props => {
-  const { navOpaque, navTransparent, onScroll, toggleDrawer } = props;
+  const {
+          navOpaque,
+          navTransparent,
+          onScroll,
+          toggleDrawer,
+        } = props;
 
   return (
     <Fragment>
       <InView
         as="div"
-        style={{ height: '2px' }}
-        threshold={0.1}
-        onChange={state => (state ? navTransparent : navOpaque)}
-      />
-      <Navbar className={styles.navbar} color="light" light expand="md">
-        <NavbarBrand href="https://www.coachella.com/" id={styles.logo}>
-          <CoachellaLogo className={styles.logoCoachella} />
+        style={ { height: '2px' } }
+        threshold={ .1 }
+        onChange={ state => state ? navTransparent : navOpaque } />
+      <Navbar
+        className={ styles.navbar }
+        color="light"
+        light
+        expand="md">
+        <NavbarBrand
+          href="https://www.coachella.com/"
+          id={ styles.logo }
+        >
+          <CoachellaLogo className={ styles.logoCoachella } />
         </NavbarBrand>
-        <Burger toggleModal={toggleDrawer} className={styles.burger} />
+        <Burger
+          toggleModal={ toggleDrawer }
+          className={ styles.burger }
+        />
       </Navbar>
       <InView
         as="span"
-        style={{ height: '3px', color: 'red' }}
-        threshold={0.1}
-        onChange={state => onScroll(state)}
-      />
+        style={ { height: '3px', color: 'red' } }
+        threshold={ .1 }
+        onChange={ state => onScroll(state) } />
     </Fragment>
+
   );
 };
 
 const FullNavbar = props => {
   const {
-    navOpaque,
-    navTransparent,
-    isOpen,
-    navbarFixed,
-    toggleDrawer,
-    transparentNav,
-  } = props;
+          navOpaque,
+          navTransparent,
+          isOpen,
+          navbarFixed,
+          toggleDrawer,
+          transparentNav,
+        } = props;
 
   return (
     <Fragment>
       <InView
         as="div"
-        style={{ height: '2px' }}
-        threshold={0.1}
-        onChange={state => (state ? navTransparent() : navOpaque())}
-      />
+        style={ { height: '2px' } }
+        threshold={ .1 }
+        onChange={ state => state ? navTransparent() : navOpaque() } />
       <Headroom
-        downTolerance={50}
-        calcHeightOnResize={true}
-        style={{
+        downTolerance={ 50 }
+        calcHeightOnResize={ true }
+        style={ {
           WebkitTransition: 'all .5s ease-in-out',
           MozTransition: 'all .5s ease-in-out',
           transition: 'all .5s ease-in-out',
-        }}
-        wrapperStyle={{
+        } }
+        wrapperStyle={ {
           backgroundColor: navbarFixed ? '#fff' : 'unset',
           position: navbarFixed ? 'fixed' : 'relative',
           zIndex: navbarFixed ? '1' : 'unset',
-        }}
-      >
+        } }>
         <Navbar
-          className={
-            !transparentNav
-              ? `${styles.navbar} ${styles.bgLight} ${styles.navWhite}`
-              : `${styles.navbar}`
-          }
+          className={ !transparentNav
+            ? `${ styles.navbar } ${ styles.bgLight } ${ styles.navWhite }`
+            : `${ styles.navbar }` }
           color="light"
           light
-          fixed={isOpen ? 'top' : ''}
-          expand="md"
-        >
+          fixed={ isOpen ? 'top' : '' }
+          expand="md">
           <NavbarBrand
             aria-label="Coachella Festival Homepage"
             href="https://www.coachella.com/"
-            id={styles.logo}
+            id={ styles.logo }
             title="Coachella Festival Homepage"
           >
-            <span className={styles.isVisuallyHidden}>Coachella</span>
-            <CoachellaLogo className={styles.logoCoachella} />
+            <span className={ styles.isVisuallyHidden }>Coachella</span>
+            <CoachellaLogo className={ styles.logoCoachella } />
           </NavbarBrand>
-          <Collapse isOpen={isOpen} navbar>
+          <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem className={styles.navItem}>
+              <NavItem className={ styles.navItem }>
                 <form action="https://www.coachella.com/lineup/#/artists/alphabetical">
                   <button
-                    className={styles.navLink}
+                    className={ styles.navLink }
                     type="submit"
                     aria-label="Music"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     <span>MUSIC</span>
                   </button>
                 </form>
               </NavItem>
-              <NavItem className={styles.navItem}>
+              <NavItem className={ styles.navItem }>
                 <form action="https://www.coachella.com/ada">
                   <button
-                    className={styles.navLink}
+                    className={ styles.navLink }
                     type="submit"
                     aria-label="ADA"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     <span>ADA</span>
                   </button>
                 </form>
               </NavItem>
-              <NavItem className={styles.navItem}>
+              <NavItem className={ styles.navItem }>
                 <button
                   aria-label="About Live Captioning"
-                  className={styles.navLink}
-                  onClick={toggleDrawer}
+                  className={ styles.navLink }
+                  onClick={ toggleDrawer }
                   rel="noopener noreferrer"
-                  type="button"
-                >
+                  type="button">
                   <span>ABOUT LIVE CAPTIONING</span>
                 </button>
               </NavItem>
