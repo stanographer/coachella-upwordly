@@ -1,6 +1,6 @@
 {
   "name": "coachella-captioning",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@teamwork/sharedb": "^3.0.1",
