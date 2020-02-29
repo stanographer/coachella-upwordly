@@ -1,16 +1,16 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { Collapse, Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
-import Headroom from "react-headroom";
-import "intersection-observer";
-import { InView } from "react-intersection-observer";
-import styles from "../../index.module.scss";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { Collapse, Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
+import Headroom from 'react-headroom';
+import 'intersection-observer';
+import { InView } from 'react-intersection-observer';
+import styles from '../../index.module.scss';
 
 // Import SVG logo
-import { CoachellaLogo } from "../Logos";
+import { CoachellaLogo } from '../Logos';
 
 // Import burger menu
-import { Burger } from "../Controls";
+import { Burger } from '../Controls';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Navigation extends React.Component {
 
   navOpaque = () => this.setState({ transparentNav: false });
 
-  onScroll = state => console.log("on scroll", this.state);
+  onScroll = state => console.log('on scroll', this.state);
 
   toggle = () => {
     this.setState({
@@ -70,20 +70,20 @@ const MobileNav = props => {
   return (
     <Fragment>
       <InView
-        as="div"
-        style={{ height: "2px" }}
+        as='div'
+        style={{ height: '2px' }}
         threshold={0.1}
         onChange={state => (state ? navTransparent : navOpaque)}
       />
-      <Navbar className={styles.navbar} color="light" light expand="md">
-        <NavbarBrand href="https://www.coachella.com/" id={styles.logo}>
+      <Navbar className={styles.navbar} color='light' light expand='md'>
+        <NavbarBrand href='https://www.coachella.com/' id={styles.logo}>
           <CoachellaLogo className={styles.logoCoachella} />
         </NavbarBrand>
         <Burger toggleModal={toggleDrawer} className={styles.burger} />
       </Navbar>
       <InView
-        as="span"
-        style={{ height: "3px", color: "red" }}
+        as='span'
+        style={{ height: '3px', color: 'red' }}
         threshold={0.1}
         onChange={state => onScroll(state)}
       />
@@ -104,8 +104,8 @@ const FullNavbar = props => {
   return (
     <Fragment>
       <InView
-        as="div"
-        style={{ height: "2px" }}
+        as='div'
+        style={{ height: '2px' }}
         threshold={0.1}
         onChange={state => (state ? navTransparent() : navOpaque())}
       />
@@ -113,14 +113,14 @@ const FullNavbar = props => {
         downTolerance={50}
         calcHeightOnResize={true}
         style={{
-          WebkitTransition: "all .5s ease-in-out",
-          MozTransition: "all .5s ease-in-out",
-          transition: "all .5s ease-in-out",
+          WebkitTransition: 'all .5s ease-in-out',
+          MozTransition: 'all .5s ease-in-out',
+          transition: 'all .5s ease-in-out',
         }}
         wrapperStyle={{
-          backgroundColor: navbarFixed ? "#fff" : "unset",
-          position: navbarFixed ? "fixed" : "relative",
-          zIndex: navbarFixed ? "1" : "unset",
+          backgroundColor: navbarFixed ? '#fff' : 'unset',
+          position: navbarFixed ? 'fixed' : 'relative',
+          zIndex: navbarFixed ? '1' : 'unset',
         }}
       >
         <Navbar
@@ -129,41 +129,41 @@ const FullNavbar = props => {
               ? `${styles.navbar} ${styles.bgLight} ${styles.navWhite}`
               : `${styles.navbar}`
           }
-          color="light"
+          color='light'
           light
-          fixed={isOpen ? "top" : ""}
-          expand="md"
+          fixed={isOpen ? 'top' : ''}
+          expand='md'
         >
           <NavbarBrand
-            aria-label="Coachella Festival Homepage"
-            href="https://www.coachella.com/"
+            aria-label='Coachella Festival Homepage'
+            href='https://www.coachella.com/'
             id={styles.logo}
-            title="Coachella Festival Homepage"
+            title='Coachella Festival Homepage'
           >
             <span className={styles.isVisuallyHidden}>Coachella</span>
             <CoachellaLogo className={styles.logoCoachella} />
           </NavbarBrand>
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className='ml-auto' navbar>
               <NavItem className={styles.navItem}>
-                <form action="https://www.coachella.com/lineup/#/artists/alphabetical">
+                <form action='https://www.coachella.com/lineup/#/artists/alphabetical'>
                   <button
                     className={styles.navLink}
-                    type="submit"
-                    aria-label="Music"
-                    rel="noopener noreferrer"
+                    type='submit'
+                    aria-label='Music'
+                    rel='noopener noreferrer'
                   >
                     <span>MUSIC</span>
                   </button>
                 </form>
               </NavItem>
               <NavItem className={styles.navItem}>
-                <form action="https://www.coachella.com/ada">
+                <form action='https://www.coachella.com/ada'>
                   <button
                     className={styles.navLink}
-                    type="submit"
-                    aria-label="ADA"
-                    rel="noopener noreferrer"
+                    type='submit'
+                    aria-label='ADA'
+                    rel='noopener noreferrer'
                   >
                     <span>ADA</span>
                   </button>
@@ -171,11 +171,11 @@ const FullNavbar = props => {
               </NavItem>
               <NavItem className={styles.navItem}>
                 <button
-                  aria-label="About Live Captioning"
+                  aria-label='About Live Captioning'
                   className={styles.navLink}
                   onClick={toggleDrawer}
-                  rel="noopener noreferrer"
-                  type="button"
+                  rel='noopener noreferrer'
+                  type='button'
                 >
                   <span>ABOUT LIVE CAPTIONING</span>
                 </button>
