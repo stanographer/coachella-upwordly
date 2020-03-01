@@ -2,8 +2,10 @@ sudo: true
 dist: trusty
 language: node_js
 node_js:
-- '10'
-cache: npm
+- "stable"
+cache:
+  directories:
+  - node_modules
 ssh_known_hosts: 206.189.169.212
 branches:
   only:
@@ -37,6 +39,7 @@ before_deploy:
 - ssh-add ./deploy_key
 deploy:
   skip_cleanup: true
+  local_dir: build
   provider: script
   script: bash .travis/deploy.sh production
   on:
