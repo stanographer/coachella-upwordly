@@ -1,1 +1,1 @@
-export const PAGE_TITLE = 'Coachella Live Captioning';
+export const PAGE_TITLE = 'Coachella Festival Live Captioning';
