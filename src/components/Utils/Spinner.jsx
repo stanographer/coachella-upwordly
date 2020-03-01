@@ -15,7 +15,7 @@ const Spinner = props => {
 
   return (
     <Fragment>
-      {loading ? (
+      {loading && (
         <PulseLoader
           css={override}
           size={15}
@@ -23,7 +23,7 @@ const Spinner = props => {
           color="#000000"
           loading={loading}
         />
-      ) : null}
+      )}
     </Fragment>
   );
 };
