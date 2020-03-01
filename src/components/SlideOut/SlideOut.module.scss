@@ -132,7 +132,7 @@
     letter-spacing: 4px;
     margin: 0;
   }
-
+  background-color: $white;
   display: block;
   max-width: 70%;
   padding: 8rem 20.8rem 8rem 13vw;
@@ -179,10 +179,6 @@ section {
   .whiteContentWrapper {
     @include sectionContent;
 
-    display: block;
-    max-width: 100%;
-    padding: 4.8rem 5vw;
-
     .h3,
     h3 {
       font-size: 2.8rem;
@@ -190,6 +186,10 @@ section {
       letter-spacing: 4px;
       margin: 0;
     }
+    background-color: $white;
+    display: block;
+    max-width: 100%;
+    padding: 4.8rem 5vw;
   }
 
   li {
@@ -205,7 +205,6 @@ section {
     margin-top: 8rem;
   }
 }
-
 @include iphone-4 {
   .contents {
     header {
