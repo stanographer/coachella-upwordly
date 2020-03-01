@@ -32,7 +32,7 @@ before_script:
 - chmod 600 ./deploy_key
 - ssh-add ./deploy_key
 script:
-- npm run build-css && REACT_APP_ENV=production react-scripts build
+- REACT_APP_ENV=production npm run build-css && react-scripts build
 before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deploy_key
