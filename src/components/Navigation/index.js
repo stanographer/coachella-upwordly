@@ -5,6 +5,7 @@ import Headroom from 'react-headroom';
 import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
 import styles from '../../index.module.scss';
+import Dates from './Dates';
 
 // Import SVG logo
 import { CoachellaLogo } from '../Logos';
@@ -151,6 +152,7 @@ const FullNavbar = props => {
           >
             <span className={ styles.isVisuallyHidden }>Coachella</span>
             <CoachellaLogo className={ styles.logoCoachella } />
+            <Dates dates='APR 10-12 & 17-19' />
           </NavbarBrand>
           <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>

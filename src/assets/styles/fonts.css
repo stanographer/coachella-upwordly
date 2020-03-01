@@ -53,3 +53,10 @@
   src: url("../fonts/Poppins/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"), url("../fonts/Poppins/Poppins-SemiBold.woff") format("woff"), url("../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal; }
+
+@font-face {
+  font-family: 'Mont Heavy';
+  src: url('../fonts/Mont/Mont-Heavy.eot');
+  src: url('../fonts/Mont/Mont-Heavy.eot?#iefix') format('embedded-opentype'), url('../fonts/Mont/Mont-Heavy.woff2') format('woff2'), url('../fonts/Mont/Mont-Heavy.woff') format('woff');
+  font-weight: 800;
+  font-style: normal; }
