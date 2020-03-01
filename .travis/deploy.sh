@@ -11,7 +11,7 @@ echo "Sending package to remote host..."
 scp -o stricthostkeychecking=no package.tgz "$REMOTE_USER@$REMOTE_HOST:/home/deploy/builds/coachella" || exit 1
 
 # Start ssh session.
-ssh -t -o stricthostkeychecking=no "$REMOTE_USER@$REMOTE_HOST"
+ssh -t -o stricthostkeychecking=no "$REMOTE_USER@$REMOTE_HOST" << "ENDSSH"
 
 # Prod mode.
 echo "Setting NODE_ENV, REACT_APP_ENV to production."
