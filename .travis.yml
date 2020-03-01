@@ -2,46 +2,45 @@ sudo: true
 dist: trusty
 language: node_js
 node_js:
-  - '10'
+- '10'
 cache: npm
 ssh_known_hosts: 206.189.169.212
 branches:
   only:
-    - master
+  - master
 env:
   global:
-    - REMOTE_USER=root
-    - REMOTE_HOST=206.189.169.212
-    - PORT=3000
+  - REMOTE_USER=root
+  - REMOTE_HOST=206.189.169.212
+  - PORT=3000
 before_install:
-  - openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-    - chmod 600 ./deploy_key
-    - echo -e "Host $REMOTE_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-    - ssh-add ./deploy_key
-    - ssh -i ./deploy_key root@$REMOTE_HOST pwd
-    - npm install -g npm
-    - chmod +x .travis/deploy.sh
+- openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- eval "$(ssh-agent -s)" - chmod 600 ./deploy_key - echo -e "Host $REMOTE_HOST\n\tStrictHostKeyChecking
+  no\n" >> ~/.ssh/config - ssh-add ./deploy_key - ssh -i ./deploy_key root@$REMOTE_HOST
+  pwd - npm install -g npm - chmod +x .travis/deploy.sh
 install:
-  - npm install
+- npm install
 before_script:
-  - openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - ssh-add ./deploy_key
+- openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- ssh-add ./deploy_key
 script:
-  - npm run build-css && REACT_APP_ENV=production react-scripts build
+- npm run build-css && REACT_APP_ENV=production react-scripts build
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - ssh-add ./deploy_key
+- openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- ssh-add ./deploy_key
 deploy:
   skip_cleanup: true
   provider: script
   script: bash .travis/deploy.sh production
   on:
     branch: master
+notifications:
+  slack:
+    secure: LdbADiKLR5smS5Tv4D0IS1IpU/zfAl3sH/qO1kkDp3EZzZtYHv5J5Adn/Txb5hABGYO0DqiH1ftWElZcbqG5lGe97wB+I7CVFZiNhiMm1BF0ehZjgu0hQUywT6p5rZmO8CWE66iHFktmQEsAZkNtN7U6ITjcoGUp4/aaoCYenuv50WuaUf6aRRvI8org7IFrMEgOiuobuFCZkNQp+sl5mWX5/hyMWaeJnSisQyr6SojsoZWF0zDnFkofAJj45WDU9PCEfyMK84ft/2Mi7wKiML+LYopJV342FlJQb/VGtpYAs8rdR51rKwUkPdwVHZLWjjDcdX6zfm8wUOt9J8mx5bE8QcYJxFG/bNwRCN/jz0Ua9i0UX6MQTIu1DglBPkdXIjbW70x854vS19+V9RTntaYmPCkrnAggZ3ylkGrwz1ZYLq/5mxsA4JbXCb0HxY7Z5e9Id2u3K6QEpe1YcXIeH65fZqJK3wZT5dMWo2GsxM43/x9UlBeT1ivXtm3++JD097b9JjCqZXZlmP/fS4pf9ZCfyue7xXuCdjWtGeqRe2SBA9wUb7DT+uqThH+0OB15x3ecTAVbEiVrwCp5iFFwKCthZkDFuzPWeagWqi8VzFo5kz+F+EKy9ScfD2T8rH8whUyhBO/0brZhstH8hxn+er90vIDZKLncRy5lTyYDvuY=
