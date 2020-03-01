@@ -2,7 +2,7 @@ sudo: true
 dist: trusty
 language: node_js
 node_js:
-  - '10'
+  - "10"
 cache: npm
 ssh_known_hosts: 206.189.169.212
 branches:
@@ -47,4 +47,11 @@ deploy:
     branch: master
 notifications:
   slack:
-    secure: JgoEFCkXVZ6JilwzHKzdzxHGCRXgFcjiEwHp9EseIBiKRdRvJpNAevW218RRQcBg6olPz5ugsMazMwqWRiCSKGw0RH0jEIwZHjSxC8n7JwogkAGwYl0FqVswrNGzf3Q7P+lZlmAb1XTYbnfoIwUu/uUbog9xBDq/Em+gbzOMJk+1VdzYAVM90eExxsLRdvExvYSndleX4Afuk1CxBE5buMUpTWvi8LuFtg6o4JhAmE4EAVLn5SpvgZeT7HSwFaRFUbCGr6lt1mM6ppBjGq34zEUp4DpHvlTVCOSO0/TMgPlFcLMHlob119R/Q04dWFoggD7EMGV6jjFLq4j5iEqDDTRVkbBQMXxDJlPNhzGPoXfjKB69eu2T9ktnKonWGDo7wiEtEbAzWfJzPxghzuU1Z55ENK8xEEIml1wVdn/yPhPJC62isyCzib+2jtObFeVAxBc+WePs0XwEwTc4nCcGMVoE7phl3+TnveMw2qw8sYFFetIDseHqZELhYoERzU7NacEtwQ0cKforbKb2F6N6KkwN4nDkp+hu26sum2dhX4ZLgzf//d84/2Ebe37wMumaLkzK89PiWL5wQzHCx2epg4+D6PT4XSyGPPgYrYYacALY9i/hBnZ62NQIrS00G6ZfYiGxUdX5kt13GhxWwdMRqG+JpQBbN8Xb1FMgnQHNuog=
+    rooms:
+      - secure: WEz6U89/sJ0dHS4UPwMWbCkKKzoOQY9r/0Z/1D0HpJmIyKpk8ggyicAE2iT+7jjIdWcv8DGj55CXLIbH2nErxJzEJqrR2FJN89LQVJp1QgUuNrzZJpwldQzZrTHFJozGerizSxHsFCjmMcEXQoMC4fNR2Wh4+iFFGMtJrBgSHoVcrYEF2nSyU9OTPhyLkiDcz2A0B7yq2f8+5Qd6BvZwM/ocC3sEt7jF6STtgeqRYMSZEERQJYl1rgK2vwd4hl6UbEGys/475+Sp7/1xNwIEqNp2bleiggFUzOnDiUaJ+SnnOeIXQYSPaKO2lOG4Kl35Wk8EhKSx3IHH/JP9fa2ixTNIxlScy+53Cy5QGB4jx2AAnMOXicJfGZm5jUkcRR8u/1qA96YlOQ7+CAlIEXi6x35EpAi9rgEKS/T++svLXvH11UkgBVnnDThrLQOG2KT7rAmGbJzS1T0ZgnprLtW7ItP7i2WDyUxotdoatgpCPiJQfg5d9ZLbep/r1v41Ni18TNCirsL1ws+ZmBDCeAc8KXyBM43fwtQQJu6XG+sUMkM876HFjB2TqhWZZoOXegH+TZy1ZeU9Iq4pKT67j/nq93L7+NfbXETppMElUtgrAnFVYZzKr8Hc9YuXJH26WTHftPe6s9j9CvlGLYijoEiwh1GLpaExEtUzckSXxhcgyfI=
+    on_success: always  # change: send a notification when the build status changes.
+    on_failure: always  # always: always send a notification.
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
