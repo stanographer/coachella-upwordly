@@ -2,43 +2,39 @@ sudo: true
 dist: trusty
 language: node_js
 node_js:
-  - "10"
+- '10'
 cache: npm
 ssh_known_hosts: 206.189.169.212
 branches:
   only:
-    - master
+  - master
 env:
   global:
-    - REMOTE_USER=root
-    - REMOTE_HOST=206.189.169.212
-    - PORT=3000
+  - REMOTE_USER=root
+  - REMOTE_HOST=206.189.169.212
+  - PORT=3000
 before_install:
-  - openssl aes-256-cbc -K $encrypted_886e1d2bd29d_key -iv $encrypted_886e1d2bd29d_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - echo -e "Host $REMOTE_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh-add ./deploy_key
-  - ssh -i ./deploy_key root@$REMOTE_HOST pwd
-  - npm install -g npm
-  - chmod +x .travis/deploy.sh
+- openssl aes-256-cbc -K $encrypted_ea0378058e19_key -iv $encrypted_ea0378058e19_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- echo -e "Host $REMOTE_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
+- ssh -i ./deploy_key root@$REMOTE_HOST pwd
+- npm install -g npm
+- chmod +x .travis/deploy.sh
 install:
-  - npm install
+- npm install
 before_script:
-  - openssl aes-256-cbc -K $encrypted_886e1d2bd29d_key -iv $encrypted_886e1d2bd29d_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - ssh-add ./deploy_key
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- ssh-add ./deploy_key
 script:
-  - npm run build-css && REACT_APP_ENV=production react-scripts build
+- npm run build-css && REACT_APP_ENV=production react-scripts build
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_886e1d2bd29d_key -iv $encrypted_886e1d2bd29d_iv
-    -in deploy_key.enc -out ./deploy_key -d
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - ssh-add ./deploy_key
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- ssh-add ./deploy_key
 deploy:
   skip_cleanup: true
   provider: script
@@ -48,10 +44,11 @@ deploy:
 notifications:
   slack:
     rooms:
-      - secure: WEz6U89/sJ0dHS4UPwMWbCkKKzoOQY9r/0Z/1D0HpJmIyKpk8ggyicAE2iT+7jjIdWcv8DGj55CXLIbH2nErxJzEJqrR2FJN89LQVJp1QgUuNrzZJpwldQzZrTHFJozGerizSxHsFCjmMcEXQoMC4fNR2Wh4+iFFGMtJrBgSHoVcrYEF2nSyU9OTPhyLkiDcz2A0B7yq2f8+5Qd6BvZwM/ocC3sEt7jF6STtgeqRYMSZEERQJYl1rgK2vwd4hl6UbEGys/475+Sp7/1xNwIEqNp2bleiggFUzOnDiUaJ+SnnOeIXQYSPaKO2lOG4Kl35Wk8EhKSx3IHH/JP9fa2ixTNIxlScy+53Cy5QGB4jx2AAnMOXicJfGZm5jUkcRR8u/1qA96YlOQ7+CAlIEXi6x35EpAi9rgEKS/T++svLXvH11UkgBVnnDThrLQOG2KT7rAmGbJzS1T0ZgnprLtW7ItP7i2WDyUxotdoatgpCPiJQfg5d9ZLbep/r1v41Ni18TNCirsL1ws+ZmBDCeAc8KXyBM43fwtQQJu6XG+sUMkM876HFjB2TqhWZZoOXegH+TZy1ZeU9Iq4pKT67j/nq93L7+NfbXETppMElUtgrAnFVYZzKr8Hc9YuXJH26WTHftPe6s9j9CvlGLYijoEiwh1GLpaExEtUzckSXxhcgyfI=
-    on_success: always  # change: send a notification when the build status changes.
-    on_failure: always  # always: always send a notification.
+    - secure: WEz6U89/sJ0dHS4UPwMWbCkKKzoOQY9r/0Z/1D0HpJmIyKpk8ggyicAE2iT+7jjIdWcv8DGj55CXLIbH2nErxJzEJqrR2FJN89LQVJp1QgUuNrzZJpwldQzZrTHFJozGerizSxHsFCjmMcEXQoMC4fNR2Wh4+iFFGMtJrBgSHoVcrYEF2nSyU9OTPhyLkiDcz2A0B7yq2f8+5Qd6BvZwM/ocC3sEt7jF6STtgeqRYMSZEERQJYl1rgK2vwd4hl6UbEGys/475+Sp7/1xNwIEqNp2bleiggFUzOnDiUaJ+SnnOeIXQYSPaKO2lOG4Kl35Wk8EhKSx3IHH/JP9fa2ixTNIxlScy+53Cy5QGB4jx2AAnMOXicJfGZm5jUkcRR8u/1qA96YlOQ7+CAlIEXi6x35EpAi9rgEKS/T++svLXvH11UkgBVnnDThrLQOG2KT7rAmGbJzS1T0ZgnprLtW7ItP7i2WDyUxotdoatgpCPiJQfg5d9ZLbep/r1v41Ni18TNCirsL1ws+ZmBDCeAc8KXyBM43fwtQQJu6XG+sUMkM876HFjB2TqhWZZoOXegH+TZy1ZeU9Iq4pKT67j/nq93L7+NfbXETppMElUtgrAnFVYZzKr8Hc9YuXJH26WTHftPe6s9j9CvlGLYijoEiwh1GLpaExEtUzckSXxhcgyfI=
+    on_success: always
+    on_failure: always
     template:
-      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
-      - "Execution time: *%{duration}*"
-      - "Message: %{message}"
+    - Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>)
+      for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`.
+    - 'Execution time: *%{duration}*'
+    - 'Message: %{message}'
