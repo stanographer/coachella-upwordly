@@ -18,6 +18,15 @@ echo "Setting NODE_ENV, REACT_APP_ENV to production."
 export NODE_ENV=production
 export REACT_APP_ENV=production
 
+# Go into existing build.
+cd /var/www/coachella.upword.ly
+
+# Remove it.
+rm -r html
+
+# Create empty folder.
+mkdir html
+
 # Go into deploy folder.
 cd /home/deploy/builds/coachella || exit 1
 
