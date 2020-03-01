@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Binding from './react-binding';
 import PropTypes from 'prop-types';
+import Spinner from '../Utils/Spinner';
 
 function ShareDBBinding(props) {
   const { doc, cssClass, flag, style } = props;
 
-  let [text, setText] = useState('');
+  const [text, setText] = useState('');
   let binding;
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function ShareDBBinding(props) {
     <div
       className={ cssClass || '' }
       style={ style || '' }>
-      { text || 'Loading...' }
+      { text || <Spinner loading /> }
     </div>
   );
 }

@@ -6,7 +6,6 @@ import {
 import styles from '../SlideOut/SlideOut.module.scss';
 import mainStyles from '../../index.module.scss';
 
-
 const About = () => {
   return (
     <Fragment>
