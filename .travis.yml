@@ -15,6 +15,7 @@ node_js:
       - PORT=3000
   before_install:
   install:
+    - npm install
   before_script:
   script:
   before_deploy:
