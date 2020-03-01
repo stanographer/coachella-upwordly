@@ -12,7 +12,6 @@ import * as STRINGS from './constants/strings';
 // Visual Components
 import Navigation from './components/Navigation';
 import Ornament from './components/Ornament';
-import BgVideo from './components/BgVideo';
 
 const SlideOut = React.lazy(() => import('./components/SlideOut'));
 
@@ -77,10 +76,10 @@ class App extends React.Component {
   };
 
   // Changes the active page based on menu controls.
-  handleActivePage = num => this.setState({ activePage: num });
+  handleActivePage = num => this.setState({activePage: num});
 
   // Handles setting local state externally.
-  handleSetState = state => this.setState({ ...state });
+  handleSetState = state => this.setState({...state});
 
   // Initiatives an auto-scroll to the bottom once the div grows in size.
   onScrollToBottom = atBottom => !atBottom ? this.autoscroll() : null;
@@ -102,11 +101,11 @@ class App extends React.Component {
   };
 
   // Detects a resize in the viewport, AKA detects whether the user is using mobile.
-  resize = () => this.setState({ mobile: window.innerWidth <= 760 });
+  resize = () => this.setState({mobile: window.innerWidth <= 760});
 
   // Toggles the drawer info page.
   toggleDrawer = () => {
-    let { drawerOpen, navbarFixed } = this.state;
+    let {drawerOpen, navbarFixed} = this.state;
 
     // Allows scrolling again on the body after closing modal.
     this.setState({
@@ -164,14 +163,14 @@ class App extends React.Component {
        }`;
 
     const {
-            arrowVisible,
-            activePage,
-            drawerOpen,
-            mobile,
-            navbarFixed,
-            transparentNav,
-            userScrolled,
-          } = this.state;
+      arrowVisible,
+      activePage,
+      drawerOpen,
+      mobile,
+      navbarFixed,
+      transparentNav,
+      userScrolled,
+    } = this.state;
 
     // These are the pages that can be loaded. As the user clicks
     // on a menu item, a function is executed and a number
@@ -179,15 +178,15 @@ class App extends React.Component {
     // is displayed.
     const pages = {
       0: <Captions
-        thisState={ this.state }
-        functions={
-          {
-            autoscroll: this.autoscroll,
-            handleSetState: this.handleSetState,
-            onScrollToBottom: this.onScrollToBottom,
-            onUserScroll: this.onUserScroll,
+          thisState={this.state}
+          functions={
+            {
+              autoscroll: this.autoscroll,
+              handleSetState: this.handleSetState,
+              onScrollToBottom: this.onScrollToBottom,
+              onUserScroll: this.onUserScroll,
+            }
           }
-        }
       />,
       1: <About />,
       2: <Partners />,
@@ -196,45 +195,46 @@ class App extends React.Component {
     const page = pages[activePage];
 
     return (
-      <div
-        onClick={ () => {
-          this.setState({
-            arrowVisible: true,
-            scrollOff: true,
-          });
-        } }
-      >
-        <Ornament />
-        <BgVideo />
-        <Navigation
-          arrowVisible={ arrowVisible }
-          toggleModal={ this.toggleDrawer }
-          drawerOpen={ drawerOpen }
-          mobile={ mobile }
-          navbarFixed={ navbarFixed }
-          toggleDrawer={ this.toggleDrawer }
-          transparentNav={ transparentNav }
-          userScrolled={ userScrolled }
-        />
-        <Drawer
-          direction={ mobile ? 'left' : 'top' }
-          modalElementClass={ modalStyle }
-          onRequestClose={ this.toggleDrawer }
-          open={ drawerOpen }
-          parentElement={ document.body }
-        >
-          <React.Suspense fallback={ <div /> }>
-            <SlideOut
-              toggleModal={ this.toggleDrawer }
-              handleActivePage={ this.handleSetState }
+        <div className="layout">
+          <div
+              onClick={() => {
+                this.setState({
+                  arrowVisible: true,
+                  scrollOff: true,
+                });
+              }}
+          >
+            <Ornament />
+            <Navigation
+                arrowVisible={arrowVisible}
+                toggleModal={this.toggleDrawer}
+                drawerOpen={drawerOpen}
+                mobile={mobile}
+                navbarFixed={navbarFixed}
+                toggleDrawer={this.toggleDrawer}
+                transparentNav={transparentNav}
+                userScrolled={userScrolled}
             />
-          </React.Suspense>
-        </Drawer>
-        { page }
-        { arrowVisible && !navbarFixed && activePage === 0
-          ? <Arrow scrollDown={ this.autoscroll } />
-          : '' }
-      </div>
+            <Drawer
+                direction={mobile ? 'left' : 'top'}
+                modalElementClass={modalStyle}
+                onRequestClose={this.toggleDrawer}
+                open={drawerOpen}
+                parentElement={document.body}
+            >
+              <React.Suspense fallback={<div />}>
+                <SlideOut
+                    toggleModal={this.toggleDrawer}
+                    handleActivePage={this.handleSetState}
+                />
+              </React.Suspense>
+            </Drawer>
+            {page}
+            {arrowVisible && !navbarFixed && activePage === 0
+                ? <Arrow scrollDown={this.autoscroll} />
+                : ''}
+          </div>
+        </div>
     );
   }
 }
