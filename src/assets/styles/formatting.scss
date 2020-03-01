@@ -2,7 +2,7 @@
 @import './media-queries.scss';
 
 // Colors
-$almost-black: #08080d;
+$almost-black: #26232f;
 $black: #000;
 $clear: rgba(255, 255, 255, 0);
 $drop-shadow: rgba(0, 0, 0, .14);
@@ -17,6 +17,8 @@ $font-stack-light: 'Poppins Light', 'Helvetica Neue', sans-serif;
 $font-stack-medium: 'Poppins Medium', 'Helvetica Neue', sans-serif;
 $font-stack-semibold: 'Poppins Semibold', sans-serif;
 $font-stack-bold: 'Poppins Bold', sans-serif;
+
+$font-mont-heavy: 'Mont Heavy', 'Helvetica Neue', sans-serif;
 
 %invisibleButton {
   button {
