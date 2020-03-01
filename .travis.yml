@@ -1,0 +1,26 @@
+sudo: true
+dist: trusty
+language: node_js
+node_js:
+  - '10'
+  cache: npm
+  ssh_known_hosts: 206.189.169.212
+  branches:
+    only:
+      - master
+  env:
+    global:
+      - REMOTE_USER=root
+      - REMOTE_HOST=206.189.169.212
+      - PORT=3000
+  before_install:
+  install:
+  before_script:
+  script:
+  before_deploy:
+  deploy:
+    skip_cleanup: true
+    provider: script
+    script: bash .travis/deploy.sh production
+    on:
+      branch: master
