@@ -1,22 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Collapse,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavItem,
-} from 'reactstrap';
+import { Collapse, Nav, Navbar, NavbarBrand, NavItem } from 'reactstrap';
 import Headroom from 'react-headroom';
 import 'intersection-observer';
 import { InView } from 'react-intersection-observer';
 import styles from '../../index.module.scss';
+import Dates from './Dates';
 
 // Import SVG logo
 import { CoachellaLogo } from '../Logos';
 
 // Import burger menu
-import { Burger, Close } from '../Controls';
+import { Burger } from '../Controls';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -157,6 +152,7 @@ const FullNavbar = props => {
           >
             <span className={ styles.isVisuallyHidden }>Coachella</span>
             <CoachellaLogo className={ styles.logoCoachella } />
+            <Dates dates='APR 10-12 & 17-19' />
           </NavbarBrand>
           <Collapse isOpen={ isOpen } navbar>
             <Nav className="ml-auto" navbar>
