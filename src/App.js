@@ -7,6 +7,7 @@ import Drawer from 'react-drag-drawer';
 // Modules
 import { Arrow } from './components/Controls';
 import { About, Captions, Partners } from './components/Pages';
+import * as STRINGS from './constants/strings';
 
 // Visual Components
 import Navigation from './components/Navigation';
@@ -38,7 +39,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    document.title = 'Coachella Captions';
+    document.title = STRINGS.PAGE_TITLE;
     this.element = this.elementRef.current;
     this.bodyElement = document.querySelector('body');
 

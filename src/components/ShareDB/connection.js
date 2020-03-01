@@ -2,16 +2,7 @@ import ShareDB from '@teamwork/sharedb/lib/client';
 import ReconnectingWebSocket from 'reconnecting-websocket';
 import otText from 'ot-text';
 
-const server = {
-  host: 'upword.ly/ws',
-  protocol: 'wss://',
-
-  getAddress: function() {
-    return this.protocol + this.host;
-  },
-};
-
-const socket = new ReconnectingWebSocket(server.getAddress(), [], {
+const socket = new ReconnectingWebSocket('wss://upword.ly/ws', [], {
   automaticOpen: true,
   maxReconnectionDelay: 2000,
   reconnectInterval: 2000,
