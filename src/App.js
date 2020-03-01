@@ -12,7 +12,6 @@ import * as STRINGS from './constants/strings';
 // Visual Components
 import Navigation from './components/Navigation';
 import Ornament from './components/Ornament';
-import BgVideo from './components/BgVideo';
 
 const SlideOut = React.lazy(() => import('./components/SlideOut'));
 
