@@ -101,6 +101,74 @@ body {
   min-width: 100vw;
 }
 
+.navItem {
+  button {
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    transition: opacity .01s ease-in;
+
+    &:focus {
+      outline: none;
+    }
+
+    > span {
+      border: 0;
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      vertical-align: baseline;
+    }
+  }
+}
+
+.navLink {
+  &:hover {
+    >::after {
+      transform: scaleX(.5);
+    }
+  }
+
+  &:active {
+    >::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:focus {
+    >::after {
+      transform: scaleX(1);
+    }
+  }
+
+  >::after {
+    background: $hot-pink;
+    bottom: 0;
+    content: '';
+    height: .2rem;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .4s ease-out;
+    width: 100%;
+  }
+
+  color: $almost-black !important;
+  font-family: $font-stack;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: .18rem !important;
+  padding: 2rem;
+  position: relative;
+}
+
 .logoCoachella {
   height: 2rem !important;
   padding: .5rem;
@@ -191,8 +259,7 @@ body {
 
 .trackTitle .mainHeader {
   h1 {
-    font-family: $font-mont-heavy;
-    font-size: 4.75rem;
+    font-family: $font-stack;
     font-weight: 600;
   }
 }
@@ -569,7 +636,7 @@ body {
 
   .contentPanel {
     padding: 0 5vw;
-    max-width: 85%;
+    max-width: 70%;
   }
 
   .liveTranscriptText {
@@ -625,7 +692,7 @@ body {
 
   .navbar {
     height: 10rem;
-    padding: 0 7vw;
+    padding: 0 13vw;
   }
 
   .responsiveFlower {
